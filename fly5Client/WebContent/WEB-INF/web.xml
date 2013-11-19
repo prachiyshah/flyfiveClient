@@ -9,4 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>FlightServlet</display-name>
+    <servlet-name>FlightServlet</servlet-name>
+    <servlet-class>edu.sjsu.fly5.controller.FlightServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FlightServlet</servlet-name>
+    <url-pattern>/FlightServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

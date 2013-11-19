@@ -1,0 +1,7 @@
+eclipse.preferences.version=1
+encoding//src/edu/sjsu/fly5/pojos/Attribute.java=UTF-8
+encoding//src/edu/sjsu/fly5/pojos/Flight.java=UTF-8
+encoding//src/edu/sjsu/fly5/services/FlightService.java=UTF-8
+encoding//src/edu/sjsu/fly5/services/FlightServiceService.java=UTF-8
+encoding//src/edu/sjsu/fly5/services/FlightServiceServiceLocator.java=UTF-8
+encoding//src/edu/sjsu/fly5/services/FlightServiceSoapBindingStub.java=UTF-8

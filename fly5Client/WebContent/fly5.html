@@ -7,7 +7,7 @@
 	href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 <link rel="stylesheet" href="css/main.css">
 <script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+	src="js/jquery-1.7.2.min.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script src="js/util.js"></script>
 <title>Fly5 Airlines</title>
@@ -29,13 +29,13 @@
 						<label class="radio-inline"><input type="radio"
 							name="trip" value="1">One Way</label> <label class="radio-inline"><input
 							checked type="radio" name="trip" value="2">Round Trip</label> <input
-							type="text" class="form-control" name="from" placeholder="From"
+							type="text" class="form-control" name="source" placeholder="From"
 							required autofocus> <input type="text"
-							class="form-control" name="to" placeholder="To" required
+							class="form-control" name="to" placeholder="destination" required
 							autofocus>
 						<div class="controls controls-row">
-							<input type="date" id="from_datepicker" class="span"
-								placeholder="Onward date"> <input class="span"
+							<input type="date" id="from_datepicker" name="departureDate" class="span"
+								placeholder="Onward date"> <input name="returnDates" class="span"
 								type="date" placeholder="Return date" id="return_datepicker">
 						</div>
 						<select class="form-control" name="class">

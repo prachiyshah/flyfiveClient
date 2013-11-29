@@ -1,7 +1,7 @@
 body {
-	padding-top: 40px;
+	padding-top: 20px;
 	padding-bottom: 40px;
-	background-color: #eee;
+	background-color: #fff;
 }
 
 .container {
@@ -13,17 +13,19 @@ body {
 }
 
 .title {
-	color: white;
+	color: #483D8B;
 	text-align: center;
-	font: bold 36px Lucida Handwriting;
-	font-size: 100px;
+	font-family: Lucida Handwriting;
+	font-size: 60px;
 }
 
 .form-signin {
 	max-width: 330px;
 	padding: 15px;
-	background-color: white; 
-	margin: 0 auto;
+	background-color: #f7f7f7; 
+	margin: 40px auto;
+	border-radius: 2px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 .form-signin .form-signin-heading,.form-signin .checkbox {
@@ -70,15 +72,3 @@ body {
 .control-label {
 	font-weight: normal;
 }
-
-/*SignUp css*/
-.form-signin input[type="radio"] {
-	margin-bottom: 10px;
-	border-top-left-radius: 0;
-	border-top-right-radius: 0;
-}
-
-#video_background { position: absolute; bottom: 0px; right: 0px; min-width: 100%; min-height: 100%; width: auto; height: auto; z-index: -1000; overflow: hidden; }
-
-Read more: HTML Video Background Tutorial - HTML5 and CSS only! http://kesilconsulting.com/web-designer-magazine/html-video-background-tutorial/#ixzz2kzOXYljx 
-Follow us: @kesilconsulting on Twitter | kesilconsulting on Facebook

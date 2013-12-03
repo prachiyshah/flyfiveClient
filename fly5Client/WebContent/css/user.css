@@ -69,3 +69,31 @@
 	border: none !important;
 	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
 }
+
+.passenger-info {
+	margin: 70px auto;
+	width: 80%;
+	text-align:left;
+	background-color: #f7f7f7;
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+}
+
+.passenger-form {
+	max-width: 400px;
+	padding: 20px;
+}
+
+.passenger-form button {
+	margin-top: 10px;
+}
+.passenger-form .control-label {
+	font-weight: bold;
+	padding-top: 10px; 
+}
+
+.form-control {
+	padding: 10px;
+	height:auto;
+	margin-bottom: 5px;
+	font-size: 14px;
+}

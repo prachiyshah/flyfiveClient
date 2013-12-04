@@ -27,20 +27,19 @@
 				<div class="tab-pane fade in active" id="search">
 					<form class="form-signin" action="Search.do" method="post">
 						<label class="radio-inline"><input type="radio"
-							name="trip" value="1">One Way</label> <label class="radio-inline"><input
-							checked type="radio" name="trip" value="2">Round Trip</label> <input
+							name="trip" checked="checked" value="1">One Way</label> <!-- <label class="radio-inline"><input
+							checked type="radio" name="trip" value="2">Round Trip</label> --> <input
 							type="text" class="form-control" name="source" placeholder="From"
 							required autofocus> <input type="text"
-							class="form-control" name="to" placeholder="destination" required
+							class="form-control" name="destination" placeholder="To" required
 							autofocus>
 						<div class="controls controls-row">
 							<input type="date" id="from_datepicker" name="departureDate" class="span"
-								placeholder="Onward date"> <input name="returnDates" class="span"
-								type="date" placeholder="Return date" id="return_datepicker">
+								placeholder="Onward date"> <!-- <input name="returnDates" class="span"
+								type="date" placeholder="Return date" id="return_datepicker"> -->
 						</div>
 						<select class="form-control" name="class">
 							<option>Economy</option>
-							<option>Premium</option>
 							<option>Business</option>
 							<option>First</option>
 						</select>
@@ -75,7 +74,7 @@
 								</select>
 							</div>
 						</div>
-						<button class="btn btn-primary btn-block" type="submit">Find
+						<button class="btn btn-primary btn-lg btn-block" type="submit">Find
 							Flights</button>
 						<div class="has-error">
 							<label class="control-label"></label>

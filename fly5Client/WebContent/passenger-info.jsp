@@ -38,10 +38,11 @@
 			        <label class="control-label">Traveler <%=i %>:</label>
 			    	<input class="form-control" placeholder="First Name" name="fn<%=i%>">
 			    	<input class="form-control" placeholder="Last Name" name="ln<%=i%>">
+			    	<input class="form-control" placeholder="Date of Birth (mm/dd/yy)" name="dob<%=i%>">
 			    	<input class="form-control" placeholder="Passport" name="pspt<%=i%>">
 			    	<input class="form-control" placeholder="Nationality" name="ntly<%=i%>">
 			    	<%} %>
-			    	<button type="button" class="btn btn-default" >Back</button>
+			    	<a role="button" class="btn btn-default" href="search-results.jsp" >Back</a>
 						<button type="submit" class="btn btn-primary">Make Payment</button>
 			    </form>
 			</div>

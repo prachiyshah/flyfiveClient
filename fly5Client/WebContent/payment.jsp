@@ -31,6 +31,16 @@
 			<div class="has-error">
 				<label class="control-label">${error}</label>
 			</div>
+			<div class="payment">
+			    <form method="post" action="payment.do" class="payment-form">
+			    	<label class="control-label">Payment Details</label>
+			    	<input class="form-control" placeholder="Credit Card Number" name="ccno">
+			    	<input class="form-control" placeholder="CVV" name="cvv">
+			    	<input class="form-control" placeholder="Expiry Date" name="expiry">
+			    	<a role="button" class="btn btn-default" href="passenger-info.jsp">Back</a>
+					<button type="submit" class="btn btn-primary">Book</button>
+			    </form>
+			</div>
 		</section>
 	</div>
 	<script type="text/javascript" src="js/bootstrap.js"></script>

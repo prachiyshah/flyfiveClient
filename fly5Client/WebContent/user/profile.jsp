@@ -7,6 +7,10 @@
 <link rel="stylesheet" href="../css/bootstrap.css">
 <link rel="stylesheet" href="../css/main.css">
 <link rel="stylesheet" href="../css/user.css">
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <title>Fly5 Airlines</title>
 </head>
 <body>
@@ -26,13 +30,18 @@
 						class="control-label" for="ln">Last Name:</label> <input
 						class="form-control" name="ln"> <label
 						class="control-label" for="dob">Date of Birth (mm/dd/yy):</label>
-					<input class="form-control" name="dob"> <label
-						class="control-label" for="pspt">Passport:</label> <input
+					<input class="form-control" type="date" id="dob" name="dob">
+					<label class="control-label" for="pspt">Passport:</label> <input
 						class="form-control" name="pspt"> <label
 						class="control-label" for="ntly">Nationality:</label> <input
 						class="form-control" name="ntly">
 					<button type="submit" class="btn btn-primary">Update</button>
 				</form>
+				<script>
+			    	$(function() {
+					 $("#dob").datepicker();
+					});
+				</script>
 			</div>
 		</section>
 	</div>

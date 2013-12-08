@@ -43,6 +43,7 @@
 						<th>First Name</th>
 						<th>Last Name</th>
 						<th>Email</th>
+						<th>Date of Birth</th>
 						<th>Address</th>
 						<th>Work Description</th>
 						<th>Position</th>
@@ -55,9 +56,10 @@
 						<td id="efn0">Joel</td>
 						<td id="eln0">Joseph</td>
 						<td id="eml0">joel.c@fly5.com</td>
+						<td id="edob0">01/24/1988</td>
 						<td id="eadd0"><address>8th Street,San Jose, California - 95112</address></td>
 						<td id="ewd0">Handles the technical issues of the airline</td>
-						<td id="ep0">Technical Engineer</td>
+						<td id="ep0">Aircraft Engineer</td>
 						<td id="ehd0">02/10/2008</td>
 						<td><a href="#" onclick="editEmployee('0', '187319850');"><span
 								class="glyphicon glyphicon-pencil"></span></a></td>
@@ -87,6 +89,8 @@
 									placeholder="Last Name" required autofocus><input
 									type="text" class="form-control" name="email"
 									placeholder="Email" required autofocus><input
+									type="text" class="form-control" id="dob" name="dob"
+									placeholder="Date of Birth" required autofocus><input
 									type="text" class="form-control" name="street"
 									placeholder="Street Address" required autofocus><input
 									type="text" class="form-control" name="city" placeholder="City"
@@ -103,7 +107,8 @@
 									<option value="Aircraft Engineer">Aircraft Engineer</option>
 									<option value="Ground Staff">Ground Staff</option></select><input
 									type="date" class="form-control" id="hireDate" name="hireDate"
-									placeholder="Hire Date" required autofocus>
+									placeholder="Hire Date" required autofocus><select class="form-control"
+									name="crew" required autofocus></select>
 
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default"
@@ -113,6 +118,7 @@
 								
 								<script>
 								$(function() {
+									$("#dob").datepicker();
 									$("#hireDate").datepicker();
 								});
 								</script>
@@ -144,7 +150,8 @@
 									class="form-control" name="elastName" placeholder="Last Name"
 									required autofocus><input type="text"
 									class="form-control" name="eemail" placeholder="Email" required
-									autofocus><input type="text" class="form-control"
+									autofocus><input type="date" class="form-control" id="eDob" name="eDob"
+									placeholder="Date of Birth" required autofocus><input type="text" class="form-control"
 									name="estreet" placeholder="Street Address" required autofocus><input
 									type="text" class="form-control" name="ecity"
 									placeholder="City" required autofocus><input
@@ -153,17 +160,28 @@
 									type="text" class="form-control" name="ezip"
 									placeholder="Zip" required autofocus><input
 									type="text" class="form-control" name="eworkDescription"
-									placeholder="Work Description" required autofocus><input
-									type="text" class="form-control" name="eposition"
-									placeholder="Position" required autofocus><input
-									type="text" class="form-control" name="ehireDate"
-									placeholder="Hire Date" required autofocus>
+									placeholder="Work Description" required autofocus><select class="form-control"
+									name="eposition" required autofocus>
+									<option value="Captain">Captain</option>
+									<option value="Co-Pilot">Co-Pilot</option>
+									<option value="Flight Attendant">Flight Attendant</option>
+									<option value="Aircraft Engineer">Aircraft Engineer</option>
+									<option value="Ground Staff">Ground Staff</option></select><input
+									type="date" class="form-control" id="ehireDate" name="ehireDate"
+									placeholder="Hire Date" required autofocus><select class="form-control"
+									name="ecrew" required autofocus></select>
 
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default"
 										data-dismiss="modal">Close</button>
 									<button type="submit" class="btn btn-primary">Update</button>
 								</div>
+								<script>
+							    	$(function() {
+							    		$("#eDob").datepicker();
+									    $("#ehireDate").datepicker();
+								   });
+								</script>
 							</form>
 						</div>
 					</div>

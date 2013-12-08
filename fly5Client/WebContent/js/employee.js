@@ -9,6 +9,7 @@ ADD = "eadd"; //arrival
 WD = "ewd"; //seats
 POS = "ep"; //distance
 HD = "ehd"; //freq
+DOB = "edob"
 
 //edit input field ids
 E_E_NO = "eemployeeNo";
@@ -22,6 +23,7 @@ E_ZIP = "ezip";
 E_WD = "eworkDescription";
 E_POS = "eposition";
 E_HD = "ehireDate";
+E_DOB = "eDob";
 
 D_F_NO = "demployeeno";
 
@@ -32,6 +34,7 @@ function editEmployee(tagId, Employeeno){
 	var sz = add[2].split("-");
 	var state = sz[0].trim();
 	var zip = sz[1].trim();
+	var selectedPos = document.getElementById(POS + tagId).textContent;
 	
     document.getElementsByName(E_E_NO)[0].value = document.getElementById(E_NO + tagId).textContent;
     document.getElementsByName(E_F_N)[0].value = document.getElementById(F_N + tagId).textContent;
@@ -42,8 +45,15 @@ function editEmployee(tagId, Employeeno){
     document.getElementsByName(E_ST)[0].value = state;
     document.getElementsByName(E_ZIP)[0].value = zip;
     document.getElementsByName(E_WD)[0].value = document.getElementById(WD + tagId).textContent;
-    document.getElementsByName(E_POS)[0].value = document.getElementById(POS + tagId).textContent;
+    var select = document.getElementsByName(E_POS)[0];
+    for (var i=0; i< select.length;i++) {
+    	if (select[i].label == selectedPos) {
+    		select[i].selected = true;
+    		break;
+    	}
+    }
     document.getElementsByName(E_HD)[0].value = document.getElementById(HD + tagId).textContent;
+    document.getElementsByName(E_DOB)[0].value = document.getElementById(DOB + tagId).textContent;
    
    $('#editemployee').modal({show: true});
 }
@@ -52,4 +62,3 @@ function deleteEmployee(employeeno){
 	document.getElementsByName(D_F_NO)[0].value = employeeno;
 	$('#deleteemployee').modal({show: true});
 }
-

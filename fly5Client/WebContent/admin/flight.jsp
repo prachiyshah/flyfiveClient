@@ -25,9 +25,9 @@
 			</ul>
 
 			<!-- Add view flights code -->
-			<div class="has-error">
+			<%-- <div class="has-error">
   				<label class="control-label">${error}</label>
-			</div>
+			</div> --%>
 
 			<!-- view flight -->
 			<div class="view-flight">
@@ -95,12 +95,12 @@
 						</div>
 						<div class="modal-body">
 							<form id="newflightform" action="flight.do" method="post">
-								<input type="hidden" name="action" value="add">
-								<input type="text" class="form-control" name="airline"
-									value="Fly5" required autofocus disabled> <input
-									type="text" class="form-control" name="source"
-									placeholder="Source" required autofocus> <input
-									type="text" class="form-control" name="destination"
+								<input type="hidden" name="action" value="add"> <input
+									type="text" class="form-control" name="airline" value="Fly5"
+									required autofocus disabled> <input type="text"
+									class="form-control" name="source" placeholder="Source"
+									required autofocus> <input type="text"
+									class="form-control" name="destination"
 									placeholder="Destination" required autofocus><input
 									type="text" class="form-control" name="departure"
 									placeholder="Departure Time (hh:mm)" required autofocus><input
@@ -109,11 +109,29 @@
 									type="text" class="form-control" name="seats"
 									placeholder="Number of Seats" required autofocus><input
 									type="text" class="form-control" name="distance"
-									placeholder="Distance (miles)" required autofocus><input
-									type="text" class="form-control" name="frequency"
-									placeholder="Frequency" required autofocus><input
-									type="text" class="form-control" name="fare"
-									placeholder="Base Fare" required autofocus>
+									placeholder="Distance (miles)" required autofocus>
+									<!-- frequency -->
+									<!-- <label
+									class="checkbox-inline"><input type="checkbox"
+									id="inlineCheckbox1" name="frequency" value="M"> M
+								</label><label class="checkbox-inline"> <input type="checkbox"
+									id="inlineCheckbox2" name="frequency" value="T"> T
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									id="inlineCheckbox3" name="frequency" value="W"> W
+								</label><label class="checkbox-inline"> <input type="checkbox"
+									id="inlineCheckbox3" name="frequency" value="Th"> Th
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									id="inlineCheckbox3" name="frequency" value="F"> F
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									id="inlineCheckbox3" name="frequency" value="Sat"> Sat
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									id="inlineCheckbox3" name="frequency" value="S"> S
+								</label>   -->
+									<input type="text" class="form-control" name="frequency"
+									placeholder="Frequency" required autofocus>
+								    <input type="text" class="form-control" name="fare"
+									placeholder="Base Fare" required autofocus><select
+									class="form-control" name="crew" required autofocus></select>
 
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default"
@@ -141,8 +159,8 @@
 						</div>
 						<div class="modal-body">
 							<form id="editflightform" action="flight.do" method="post">
-								<input type="hidden" name="action" value="update">
-								<input type="text" class="form-control" name="eflightno"
+								<input type="hidden" name="action" value="update"> <input
+									type="text" class="form-control" name="eflightno"
 									placeholder="Source" required autofocus disabled> <input
 									type="text" class="form-control" name="esource"
 									placeholder="Source" required autofocus><input
@@ -159,7 +177,8 @@
 									type="text" class="form-control" name="efrequency"
 									placeholder="Frequency" required autofocus><input
 									type="text" class="form-control" name="efare"
-									placeholder="Base Fare" required autofocus>
+									placeholder="Base Fare" required autofocus><select
+									class="form-control" name="ecrew" required autofocus></select>
 
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default"
@@ -187,8 +206,8 @@
 						</div>
 						<div class="modal-body">
 							<form id="deleteflightform" action="flight.do" method="post">
-							<input type="hidden" name="action" value="delete">
-								<input type="hidden" name="dflightno">
+								<input type="hidden" name="action" value="delete"> <input
+									type="hidden" name="dflightno">
 								<div class="alert alert-warning">
 									<h4>
 										<span class="glyphicon glyphicon-exclamation-sign"></span> Do

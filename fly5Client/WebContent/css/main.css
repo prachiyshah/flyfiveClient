@@ -13,6 +13,11 @@
 	color: #ffffff;
 }
 
+.header div{
+	text-align:right;
+	margin-right: 50px;
+}
+
 .section {
 	background-image: url("../images/6.jpg");
 	background-repeat: no-repeat;

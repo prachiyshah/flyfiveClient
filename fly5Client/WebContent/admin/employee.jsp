@@ -7,7 +7,10 @@
 <link rel="stylesheet" href="../css/bootstrap.css">
 <link rel="stylesheet" href="../css/main.css">
 <link rel="stylesheet" href="../css/admin.css">
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 <script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script type="text/javascript" src="../js/employee.js"></script>
 <title>Fly5 Airlines</title>
 </head>
@@ -52,7 +55,7 @@
 						<td id="efn0">Joel</td>
 						<td id="eln0">Joseph</td>
 						<td id="eml0">joel.c@fly5.com</td>
-						<td id="eadd0"><address>San Jose, California 95112</address></td>
+						<td id="eadd0"><address>8th Street,San Jose, California - 95112</address></td>
 						<td id="ewd0">Handles the technical issues of the airline</td>
 						<td id="ep0">Technical Engineer</td>
 						<td id="ehd0">02/10/2008</td>
@@ -77,8 +80,7 @@
 						</div>
 						<div class="modal-body">
 							<form id="newemployeeform" action="employee.do" method="post">
-								<input type="text" class="form-control" name="employeeNo"
-									required autofocus placeholder="Employee #"> <input
+								<input
 									type="text" class="form-control" name="firstName"
 									placeholder="First Name" required autofocus> <input
 									type="text" class="form-control" name="lastName"
@@ -90,11 +92,17 @@
 									type="text" class="form-control" name="city" placeholder="City"
 									required autofocus><input type="text"
 									class="form-control" name="state" placeholder="State" required
-									autofocus><input type="text" class="form-control"
+									autofocus><input type="text" class="form-control" name="zip"
+									required autofocus placeholder="Zip"> <input type="text" class="form-control"
 									name="workDescription" placeholder="Work Description" required
-									autofocus><input type="text" class="form-control"
-									name="position" placeholder="Position" required autofocus><input
-									type="text" class="form-control" name="hireDate"
+									autofocus><select class="form-control"
+									name="position" required autofocus>
+									<option value="Captain">Captain</option>
+									<option value="Co-Pilot">Co-Pilot</option>
+									<option value="Flight Attendant">Flight Attendant</option>
+									<option value="Aircraft Engineer">Aircraft Engineer</option>
+									<option value="Ground Staff">Ground Staff</option></select><input
+									type="date" class="form-control" id="hireDate" name="hireDate"
 									placeholder="Hire Date" required autofocus>
 
 								<div class="modal-footer">
@@ -102,6 +110,12 @@
 										data-dismiss="modal">Close</button>
 									<button type="submit" class="btn btn-primary">Save</button>
 								</div>
+								
+								<script>
+								$(function() {
+									$("#hireDate").datepicker();
+								});
+								</script>
 							</form>
 						</div>
 					</div>
@@ -136,6 +150,8 @@
 									placeholder="City" required autofocus><input
 									type="text" class="form-control" name="estate"
 									placeholder="State" required autofocus><input
+									type="text" class="form-control" name="ezip"
+									placeholder="Zip" required autofocus><input
 									type="text" class="form-control" name="eworkDescription"
 									placeholder="Work Description" required autofocus><input
 									type="text" class="form-control" name="eposition"
@@ -189,6 +205,7 @@
 				<!-- /.modal-dialog -->
 			</div>
 		</section>
+		<script type="text/javascript" src="../js/bootstrap.js"></script>
 	</div>
 </body>
 </html>

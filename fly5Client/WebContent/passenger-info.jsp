@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%int noOfPassengers = 3; %>
+<%int noOfPassengers = 3; int noOfAdults = 2; int noOfChildren = 1;%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -34,13 +34,21 @@
 			</div>
 			<div class="passenger-info">
 			    <form method="post" action="payment.do" class="passenger-form">
-			    <%for (int i=1; i<=noOfPassengers;i++) {%>
-			        <label class="control-label">Traveler <%=i %>:</label>
+			    <%for (int i=1; i<=noOfPassengers;i++) { 
+			    	String type = "";
+			    	if (noOfAdults-- > 0){
+			    		type = "Adult";
+			    	} else if (noOfChildren-- > 0){
+			    		type = "Child";
+			    	} 
+			    %>
+			        <label class="control-label">Traveler <%=i %>: (<%=type %>)</label>
 			    	<input class="form-control" placeholder="First Name" name="fn<%=i%>">
 			    	<input class="form-control" placeholder="Last Name" name="ln<%=i%>">
 			    	<input class="form-control" placeholder="Date of Birth (mm/dd/yy)" name="dob<%=i%>">
 			    	<input class="form-control" placeholder="Passport" name="pspt<%=i%>">
 			    	<input class="form-control" placeholder="Nationality" name="ntly<%=i%>">
+			    	<input type="hidden" name="type" value="<%=type%>">
 			    	<%} %>
 			    	<a role="button" class="btn btn-default" href="search-results.jsp" >Back</a>
 						<button type="submit" class="btn btn-primary">Make Payment</button>

@@ -54,7 +54,7 @@
 						<td id="src0">LAX</td>
 						<td id="dst0">SFO</td>
 						<td id="dpt0">12:15 pm</td>
-						<td id="avl0">2:00 pm</td>
+						<td id="jt0">2:00</td>
 						<td id="st0">120</td>
 						<td id="dt0">554</td>
 						<td id="fq0">Daily</td>
@@ -69,7 +69,7 @@
 						<td id="src1">LAX</td>
 						<td id="dst1">SFO</td>
 						<td id="dpt1">12:15 pm</td>
-						<td id="avl1">2:00 pm</td>
+						<td id="jt1">2:00 pm</td>
 						<td id="st1">120</td>
 						<td id="dt1">554</td>
 						<td id="fq1">Daily</td>
@@ -103,8 +103,8 @@
 									placeholder="Destination" required autofocus><input
 									type="text" class="form-control" name="departure"
 									placeholder="Departure Time (hh:mm)" required autofocus><input
-									type="text" class="form-control" name="arrival"
-									placeholder="Arrival Time (hh:mm)" required autofocus><input
+									type="text" class="form-control" name="journey"
+									placeholder="Journey Time (hh:mm)" required autofocus><input
 									type="text" class="form-control" name="seats"
 									placeholder="Number of Seats" required autofocus><input
 									type="text" class="form-control" name="distance"
@@ -148,8 +148,8 @@
 									placeholder="Destination" required autofocus><input
 									type="text" class="form-control" name="edeparture"
 									placeholder="Departure Time (hh:mm)" required autofocus><input
-									type="text" class="form-control" name="earrival"
-									placeholder="Arrival Time (hh:mm)" required autofocus><input
+									type="text" class="form-control" name="ejourney"
+									placeholder="Journey Time (hh:mm)" required autofocus><input
 									type="text" class="form-control" name="eseats"
 									placeholder="Number of Seats" required autofocus><input
 									type="text" class="form-control" name="edistance"
@@ -205,6 +205,7 @@
 				<!-- /.modal-dialog -->
 			</div>
 		</section>
+		<script type="text/javascript" src="../js/bootstrap.js"></script>
 	</div>
 </body>
 </html>

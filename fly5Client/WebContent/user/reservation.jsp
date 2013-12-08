@@ -85,7 +85,7 @@
 
 		</section>
 	</div>
-	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.js"></script>
 	<script>
 	function expand(bookingId) {
 		//	var $this = $(this);

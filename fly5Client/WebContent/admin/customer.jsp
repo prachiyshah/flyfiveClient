@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -22,33 +22,76 @@
 				<li class="active"><a href="customer.jsp">Customer</a></li>
 				<li><a href="reservation.jsp">Reservation</a></li>
 			</ul>
-<!-- Add view customers code -->
-<%-- <div class="has-error">
+			<!-- Add view customers code -->
+			<%-- <div class="has-error">
   <label class="control-label">${error}</label>
 </div> --%>
 
-<!-- view customer -->
-<div class="view-customer">
-    <table class="table table-striped table-hover">
-         <tr>
-           <th>First Name</th>
-           <th>Last Name</th>
-           <th>Email</th>
-           <th>Address</th>
-           <th>Passport</th>
-           <th>Nationality</th>
-         </tr>
-         <tr>
-           <td>Joel</td>
-           <td>Joseph</td>
-           <td>joe.jose</td>
-           <td>San Jose</td>
-           <td>H5588201</td>
-           <td>Indian</td>
-         </tr>
-    </table>
-</div>
-</section>
-</div>
+			<!-- view customer -->
+			<div class="view-customer">
+				<table class="table table-striped table-hover">
+					<tr>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Email</th>
+						<th>Address</th>
+						<th>Passport</th>
+						<th>Nationality</th>
+						<th></th>
+					</tr>
+					<tr>
+						<td>Joel</td>
+						<td>Joseph</td>
+						<td>joe.jose</td>
+						<td>San Jose</td>
+						<td>H5588201</td>
+						<td>Indian</td>
+						<td><a href="#" onclick="deleteCustomer('F5086');"><span
+								class="glyphicon glyphicon-remove"></span></a></td>
+					</tr>
+				</table>
+			</div>
+
+			<!-- delete customer modal-->
+			<div id="deletecustomer" class="modal fade" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="myModalLabel">Delete Customer</h4>
+						</div>
+						<div class="modal-body">
+							<form id="deletecustomerform" action="customer.do" method="post">
+								<input type="hidden" name="dcustomerno">
+								<div class="alert alert-warning">
+									<h4>
+										<span class="glyphicon glyphicon-exclamation-sign"></span> Do
+										you really want to delete this customer?
+									</h4>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">No</button>
+									<button type="submit" class="btn btn-primary">Yes</button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<script>
+					function deleteCustomer(customerno){
+						document.getElementsByName("dcustomerno")[0].value = customerno;
+						$('#deletecustomer').modal({show: true});
+					}
+				</script>
+				<!-- /.modal-dialog -->
+			</div>
+		</section>
+		<script type="text/javascript" src="../js/bootstrap.js"></script>
+	</div>
 </body>
 </html>

@@ -25,9 +25,9 @@
 			</ul>
 
 			<!-- Add view flights code -->
-			<%-- <div class="has-error">
+			<div class="has-error">
   				<label class="control-label">${error}</label>
-			</div> --%>
+			</div>
 
 			<!-- view flight -->
 			<div class="view-flight">
@@ -95,6 +95,7 @@
 						</div>
 						<div class="modal-body">
 							<form id="newflightform" action="flight.do" method="post">
+								<input type="hidden" name="action" value="add">
 								<input type="text" class="form-control" name="airline"
 									value="Fly5" required autofocus disabled> <input
 									type="text" class="form-control" name="source"
@@ -140,6 +141,7 @@
 						</div>
 						<div class="modal-body">
 							<form id="editflightform" action="flight.do" method="post">
+								<input type="hidden" name="action" value="update">
 								<input type="text" class="form-control" name="eflightno"
 									placeholder="Source" required autofocus disabled> <input
 									type="text" class="form-control" name="esource"
@@ -185,6 +187,7 @@
 						</div>
 						<div class="modal-body">
 							<form id="deleteflightform" action="flight.do" method="post">
+							<input type="hidden" name="action" value="delete">
 								<input type="hidden" name="dflightno">
 								<div class="alert alert-warning">
 									<h4>

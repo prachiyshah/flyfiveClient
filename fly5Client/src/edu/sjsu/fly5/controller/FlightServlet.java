@@ -61,15 +61,13 @@ public class FlightServlet extends HttpServlet {
 				deleteFlight(request,response);
 				break;
 		}
-		
-		
+		request.getRequestDispatcher("flight.jsp").forward(request, response);
 	}
 
 	private void deleteFlight(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String flightID = request.getParameter("dflightno");
 		flightProxy.deleteFlightDetails(flightID);
-		request.getRequestDispatcher("admin/flight.jsp").forward(request, response);
 	}
 
 	private void updateFlight(HttpServletRequest request,
@@ -84,8 +82,10 @@ public class FlightServlet extends HttpServlet {
 		String baseFare = request.getParameter("efare");
 		String distance = request.getParameter("edistance");
 		Flight flight = getValidFlight(request, response,source,destination,departureTime,journeyTime,frequency,seats,baseFare,distance);
-		flightProxy.updateFlightDetails(flight);
-		request.getRequestDispatcher("admin/flight.jsp").forward(request, response);
+		if(flight != null)
+		{
+			flightProxy.updateFlightDetails(flight);
+		}
 	}
 
 	private void addFlight(HttpServletRequest request,
@@ -101,29 +101,34 @@ public class FlightServlet extends HttpServlet {
 		String baseFare = request.getParameter("fare");
 		String distance = request.getParameter("distance");
 		Flight flight = getValidFlight(request, response,source,destination,departureTime,journeyTime,frequency,seats,baseFare,distance);
-		flightProxy.addFlightDetails(flight);
-		request.getRequestDispatcher("admin/flight.jsp").forward(request, response);
-
+		if(flight !=null)
+		{
+			flightProxy.addFlightDetails(flight);
+		}
 	}
 
 	private Flight getValidFlight(HttpServletRequest request,
 			HttpServletResponse response, String source, String destination, String departureTime, String journeyTime, String frequency, String seats, String baseFare, String distance) throws ServletException, IOException {
-		
-		validateFlightParameters(source,destination,departureTime,journeyTime,frequency,seats,baseFare,distance,request,response);
 
-		Flight flight = new Flight();
-		flight.setCrewID(100);
-		flight.setBaseFare(Double.parseDouble(baseFare));
-		flight.setDepartureTime(departureTime);
-		flight.setDestination(destination);
-		flight.setDistance(Long.parseLong(distance));
-		flight.setFlightStatus("available");
-		flight.setNoOfSeats(Integer.parseInt(seats));
-		flight.setSource(source);
-		flight.setAirline("Fly5");
-		flight.setJourneyTime(journeyTime);
-		flight.setFrequency(frequency);
-		return flight;
+		boolean flag = validateFlightParameters(source,destination,departureTime,journeyTime,frequency,seats,baseFare,distance,request,response);
+
+		if(flag)
+		{
+			Flight flight = new Flight();
+			flight.setCrewID(100);
+			flight.setBaseFare(Double.parseDouble(baseFare));
+			flight.setDepartureTime(departureTime);
+			flight.setDestination(destination);
+			flight.setDistance(Long.parseLong(distance));
+			flight.setFlightStatus("available");
+			flight.setNoOfSeats(Integer.parseInt(seats));
+			flight.setSource(source);
+			flight.setAirline("Fly5");
+			flight.setJourneyTime(journeyTime);
+			flight.setFrequency(frequency);
+			return flight;
+		}
+		return null;
 	}
 
 	private boolean validateFlightParameters(String source, String destination,
@@ -132,51 +137,57 @@ public class FlightServlet extends HttpServlet {
 		
 		Pattern pattern = Pattern.compile(Patterns.STRING_PATTERN);
 		Matcher matcher = pattern.matcher(source);
-		StringBuilder errorMessage = new StringBuilder();
+		StringBuilder errorMessage = new StringBuilder("<ul>");
 		boolean flag = true;
 		
 		if(!matcher.find())
 		{
+			errorMessage.append("<li>");
 			errorMessage.append("Invalid Source.");
-			errorMessage.append("\n");
+			errorMessage.append("</li>");
 			flag = false;
 		}
 		matcher = pattern.matcher(destination);
 		if(!matcher.find())
 		{
+			errorMessage.append("<li>");
 			errorMessage.append("Invalid Destination.");
-			errorMessage.append("\n");
+			errorMessage.append("</li>");
 			flag = false;
 		}
 		pattern = Pattern.compile(Patterns.TIME_PATTERN);
 		matcher = pattern.matcher(departureTime);
 		if(!matcher.find())
 		{
+			errorMessage.append("<li>");
 			errorMessage.append("Invalid departure time. Format should be hh:mm");
-			errorMessage.append("\n");
+			errorMessage.append("</li>");
 			flag = false;
 		}
 		matcher = pattern.matcher(journeyTime);
 		if(!matcher.find())
 		{
+			errorMessage.append("<li>");
 			errorMessage.append("Invalid journey time. Format should be hh:mm");
-			errorMessage.append("\n");
+			errorMessage.append("</li>");
 			flag = false;
 		}
 		try{
 			Integer.parseInt(seats);
 			}catch(NumberFormatException e)
 			{
+				errorMessage.append("<li>");
 				errorMessage.append("Seats should be numeric.");
-				errorMessage.append("\n");
+				errorMessage.append("</li>");
 				flag = false;
 			}
 			try{
 			Long.parseLong(distance);
 			}catch(NumberFormatException e)
 			{
+				errorMessage.append("<li>");
 				errorMessage.append("Distance should be numeric");
-				errorMessage.append("\n");
+				errorMessage.append("</li>");
 				flag = false;
 			}
 			
@@ -184,16 +195,19 @@ public class FlightServlet extends HttpServlet {
 			Double.parseDouble(baseFare);
 			}catch(NumberFormatException e)
 			{
+				errorMessage.append("<li>");
 				errorMessage.append("Base fare should be numeric");
-				errorMessage.append("\n");
+				errorMessage.append("</li>");
 				flag = false;
 			}
 			
 		if(!flag)
 		{
+			errorMessage.append("</ul>");
 			request.setAttribute(ERROR, errorMessage.toString());
-			request.getRequestDispatcher("admin\flight.jsp").forward(request, response);;
-		}
+		} /*else {
+			request.setAttribute(ERROR, null);
+		}*/
 		return flag;
 	}
 

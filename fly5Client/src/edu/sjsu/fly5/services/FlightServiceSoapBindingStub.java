@@ -16,7 +16,7 @@ public class FlightServiceSoapBindingStub extends org.apache.axis.client.Stub im
     static org.apache.axis.description.OperationDesc [] _operations;
 
     static {
-        _operations = new org.apache.axis.description.OperationDesc[6];
+        _operations = new org.apache.axis.description.OperationDesc[7];
         _initOperationDesc1();
     }
 
@@ -24,48 +24,102 @@ public class FlightServiceSoapBindingStub extends org.apache.axis.client.Stub im
         org.apache.axis.description.OperationDesc oper;
         org.apache.axis.description.ParameterDesc param;
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("updateFlightDetails");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "flight"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "Flight"), edu.sjsu.fly5.pojos.Flight.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "boolean"));
-        oper.setReturnClass(boolean.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "updateFlightDetailsReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[0] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("deleteFlightDetails");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "flightId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "boolean"));
-        oper.setReturnClass(boolean.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "deleteFlightDetailsReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[1] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
         oper.setName("addFlightDetails");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "flight"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "Flight"), edu.sjsu.fly5.pojos.Flight.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "boolean"));
-        oper.setReturnClass(boolean.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "addFlightDetailsReturn"));
+        oper.setReturnType(org.apache.axis.encoding.XMLType.AXIS_VOID);
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[2] = oper;
+        oper.addFault(new org.apache.axis.description.FaultDesc(
+                      new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "fault"),
+                      "edu.sjsu.fly5.util.Fly5Exception",
+                      new javax.xml.namespace.QName("http://util.fly5.sjsu.edu", "Fly5Exception"), 
+                      true
+                     ));
+        _operations[0] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("viewFlightDetails");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "flightId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "boolean"));
-        oper.setReturnClass(boolean.class);
+        oper.setReturnType(new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "Flight"));
+        oper.setReturnClass(edu.sjsu.fly5.pojos.Flight.class);
         oper.setReturnQName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "viewFlightDetailsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        oper.addFault(new org.apache.axis.description.FaultDesc(
+                      new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "fault"),
+                      "edu.sjsu.fly5.util.Fly5Exception",
+                      new javax.xml.namespace.QName("http://util.fly5.sjsu.edu", "Fly5Exception"), 
+                      true
+                     ));
+        _operations[1] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("updateFlightDetails");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "flight"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "Flight"), edu.sjsu.fly5.pojos.Flight.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(org.apache.axis.encoding.XMLType.AXIS_VOID);
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        oper.addFault(new org.apache.axis.description.FaultDesc(
+                      new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "fault"),
+                      "edu.sjsu.fly5.util.Fly5Exception",
+                      new javax.xml.namespace.QName("http://util.fly5.sjsu.edu", "Fly5Exception"), 
+                      true
+                     ));
+        _operations[2] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("deleteFlightDetails");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "flightId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(org.apache.axis.encoding.XMLType.AXIS_VOID);
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        oper.addFault(new org.apache.axis.description.FaultDesc(
+                      new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "fault"),
+                      "edu.sjsu.fly5.util.Fly5Exception",
+                      new javax.xml.namespace.QName("http://util.fly5.sjsu.edu", "Fly5Exception"), 
+                      true
+                     ));
         _operations[3] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("getTravellersOnBoard");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "flightID"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "departureDate"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "TravelerInfo"));
+        oper.setReturnClass(edu.sjsu.fly5.pojos.TravelerInfo[].class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "getTravellersOnBoardReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        oper.addFault(new org.apache.axis.description.FaultDesc(
+                      new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "fault"),
+                      "edu.sjsu.fly5.util.Fly5Exception",
+                      new javax.xml.namespace.QName("http://util.fly5.sjsu.edu", "Fly5Exception"), 
+                      true
+                     ));
+        _operations[4] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("searchFlight");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "searchAttributes"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "FlightSearchAttributes"), edu.sjsu.fly5.pojos.FlightSearchAttributes.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "FlightInstance"));
+        oper.setReturnClass(edu.sjsu.fly5.pojos.FlightInstance[].class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "searchFlightReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        oper.addFault(new org.apache.axis.description.FaultDesc(
+                      new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "fault"),
+                      "edu.sjsu.fly5.util.Fly5Exception",
+                      new javax.xml.namespace.QName("http://util.fly5.sjsu.edu", "Fly5Exception"), 
+                      true
+                     ));
+        _operations[5] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("listFlights");
@@ -74,18 +128,13 @@ public class FlightServiceSoapBindingStub extends org.apache.axis.client.Stub im
         oper.setReturnQName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "listFlightsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[4] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("searchFlight");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "searchAttributes"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "Attribute"), edu.sjsu.fly5.pojos.Attribute[].class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "Flight"));
-        oper.setReturnClass(edu.sjsu.fly5.pojos.Flight.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "searchFlightReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[5] = oper;
+        oper.addFault(new org.apache.axis.description.FaultDesc(
+                      new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "fault"),
+                      "edu.sjsu.fly5.util.Fly5Exception",
+                      new javax.xml.namespace.QName("http://util.fly5.sjsu.edu", "Fly5Exception"), 
+                      true
+                     ));
+        _operations[6] = oper;
 
     }
 
@@ -118,16 +167,44 @@ public class FlightServiceSoapBindingStub extends org.apache.axis.client.Stub im
             java.lang.Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
             java.lang.Class simplelistsf = org.apache.axis.encoding.ser.SimpleListSerializerFactory.class;
             java.lang.Class simplelistdf = org.apache.axis.encoding.ser.SimpleListDeserializerFactory.class;
-            qName = new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "Attribute");
+            qName = new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "Flight");
             cachedSerQNames.add(qName);
-            cls = edu.sjsu.fly5.pojos.Attribute.class;
+            cls = edu.sjsu.fly5.pojos.Flight.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "Flight");
+            qName = new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "FlightInstance");
             cachedSerQNames.add(qName);
-            cls = edu.sjsu.fly5.pojos.Flight.class;
+            cls = edu.sjsu.fly5.pojos.FlightInstance.class;
+            cachedSerClasses.add(cls);
+            cachedSerFactories.add(beansf);
+            cachedDeserFactories.add(beandf);
+
+            qName = new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "FlightSearchAttributes");
+            cachedSerQNames.add(qName);
+            cls = edu.sjsu.fly5.pojos.FlightSearchAttributes.class;
+            cachedSerClasses.add(cls);
+            cachedSerFactories.add(beansf);
+            cachedDeserFactories.add(beandf);
+
+            qName = new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "TravelerInfo");
+            cachedSerQNames.add(qName);
+            cls = edu.sjsu.fly5.pojos.TravelerInfo.class;
+            cachedSerClasses.add(cls);
+            cachedSerFactories.add(beansf);
+            cachedDeserFactories.add(beandf);
+
+            qName = new javax.xml.namespace.QName("http://util.fly5.sjsu.edu", "FaultBean");
+            cachedSerQNames.add(qName);
+            cls = edu.sjsu.fly5.util.FaultBean.class;
+            cachedSerClasses.add(cls);
+            cachedSerFactories.add(beansf);
+            cachedDeserFactories.add(beandf);
+
+            qName = new javax.xml.namespace.QName("http://util.fly5.sjsu.edu", "Fly5Exception");
+            cachedSerQNames.add(qName);
+            cls = edu.sjsu.fly5.util.Fly5Exception.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
@@ -198,80 +275,12 @@ public class FlightServiceSoapBindingStub extends org.apache.axis.client.Stub im
         }
     }
 
-    public boolean updateFlightDetails(edu.sjsu.fly5.pojos.Flight flight) throws java.rmi.RemoteException {
+    public void addFlightDetails(edu.sjsu.fly5.pojos.Flight flight) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
         _call.setOperation(_operations[0]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "updateFlightDetails"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {flight});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return ((java.lang.Boolean) _resp).booleanValue();
-            } catch (java.lang.Exception _exception) {
-                return ((java.lang.Boolean) org.apache.axis.utils.JavaUtils.convert(_resp, boolean.class)).booleanValue();
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public boolean deleteFlightDetails(java.lang.String flightId) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[1]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "deleteFlightDetails"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {flightId});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return ((java.lang.Boolean) _resp).booleanValue();
-            } catch (java.lang.Exception _exception) {
-                return ((java.lang.Boolean) org.apache.axis.utils.JavaUtils.convert(_resp, boolean.class)).booleanValue();
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public boolean addFlightDetails(edu.sjsu.fly5.pojos.Flight flight) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[2]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -287,25 +296,26 @@ public class FlightServiceSoapBindingStub extends org.apache.axis.client.Stub im
         if (_resp instanceof java.rmi.RemoteException) {
             throw (java.rmi.RemoteException)_resp;
         }
-        else {
-            extractAttachments(_call);
-            try {
-                return ((java.lang.Boolean) _resp).booleanValue();
-            } catch (java.lang.Exception _exception) {
-                return ((java.lang.Boolean) org.apache.axis.utils.JavaUtils.convert(_resp, boolean.class)).booleanValue();
-            }
-        }
+        extractAttachments(_call);
   } catch (org.apache.axis.AxisFault axisFaultException) {
+    if (axisFaultException.detail != null) {
+        if (axisFaultException.detail instanceof java.rmi.RemoteException) {
+              throw (java.rmi.RemoteException) axisFaultException.detail;
+         }
+        if (axisFaultException.detail instanceof edu.sjsu.fly5.util.Fly5Exception) {
+              throw (edu.sjsu.fly5.util.Fly5Exception) axisFaultException.detail;
+         }
+   }
   throw axisFaultException;
 }
     }
 
-    public boolean viewFlightDetails(java.lang.String flightId) throws java.rmi.RemoteException {
+    public edu.sjsu.fly5.pojos.Flight viewFlightDetails(java.lang.String flightId) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[3]);
+        _call.setOperation(_operations[1]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -324,22 +334,184 @@ public class FlightServiceSoapBindingStub extends org.apache.axis.client.Stub im
         else {
             extractAttachments(_call);
             try {
-                return ((java.lang.Boolean) _resp).booleanValue();
+                return (edu.sjsu.fly5.pojos.Flight) _resp;
             } catch (java.lang.Exception _exception) {
-                return ((java.lang.Boolean) org.apache.axis.utils.JavaUtils.convert(_resp, boolean.class)).booleanValue();
+                return (edu.sjsu.fly5.pojos.Flight) org.apache.axis.utils.JavaUtils.convert(_resp, edu.sjsu.fly5.pojos.Flight.class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
+    if (axisFaultException.detail != null) {
+        if (axisFaultException.detail instanceof java.rmi.RemoteException) {
+              throw (java.rmi.RemoteException) axisFaultException.detail;
+         }
+        if (axisFaultException.detail instanceof edu.sjsu.fly5.util.Fly5Exception) {
+              throw (edu.sjsu.fly5.util.Fly5Exception) axisFaultException.detail;
+         }
+   }
   throw axisFaultException;
 }
     }
 
-    public edu.sjsu.fly5.pojos.Flight[] listFlights() throws java.rmi.RemoteException {
+    public void updateFlightDetails(edu.sjsu.fly5.pojos.Flight flight) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[2]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "updateFlightDetails"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {flight});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        extractAttachments(_call);
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+    if (axisFaultException.detail != null) {
+        if (axisFaultException.detail instanceof java.rmi.RemoteException) {
+              throw (java.rmi.RemoteException) axisFaultException.detail;
+         }
+        if (axisFaultException.detail instanceof edu.sjsu.fly5.util.Fly5Exception) {
+              throw (edu.sjsu.fly5.util.Fly5Exception) axisFaultException.detail;
+         }
+   }
+  throw axisFaultException;
+}
+    }
+
+    public void deleteFlightDetails(java.lang.String flightId) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[3]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "deleteFlightDetails"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {flightId});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        extractAttachments(_call);
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+    if (axisFaultException.detail != null) {
+        if (axisFaultException.detail instanceof java.rmi.RemoteException) {
+              throw (java.rmi.RemoteException) axisFaultException.detail;
+         }
+        if (axisFaultException.detail instanceof edu.sjsu.fly5.util.Fly5Exception) {
+              throw (edu.sjsu.fly5.util.Fly5Exception) axisFaultException.detail;
+         }
+   }
+  throw axisFaultException;
+}
+    }
+
+    public edu.sjsu.fly5.pojos.TravelerInfo[] getTravellersOnBoard(java.lang.String flightID, java.lang.String departureDate) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
         _call.setOperation(_operations[4]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "getTravellersOnBoard"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {flightID, departureDate});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (edu.sjsu.fly5.pojos.TravelerInfo[]) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (edu.sjsu.fly5.pojos.TravelerInfo[]) org.apache.axis.utils.JavaUtils.convert(_resp, edu.sjsu.fly5.pojos.TravelerInfo[].class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+    if (axisFaultException.detail != null) {
+        if (axisFaultException.detail instanceof java.rmi.RemoteException) {
+              throw (java.rmi.RemoteException) axisFaultException.detail;
+         }
+        if (axisFaultException.detail instanceof edu.sjsu.fly5.util.Fly5Exception) {
+              throw (edu.sjsu.fly5.util.Fly5Exception) axisFaultException.detail;
+         }
+   }
+  throw axisFaultException;
+}
+    }
+
+    public edu.sjsu.fly5.pojos.FlightInstance[] searchFlight(edu.sjsu.fly5.pojos.FlightSearchAttributes searchAttributes) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[5]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "searchFlight"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {searchAttributes});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (edu.sjsu.fly5.pojos.FlightInstance[]) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (edu.sjsu.fly5.pojos.FlightInstance[]) org.apache.axis.utils.JavaUtils.convert(_resp, edu.sjsu.fly5.pojos.FlightInstance[].class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+    if (axisFaultException.detail != null) {
+        if (axisFaultException.detail instanceof java.rmi.RemoteException) {
+              throw (java.rmi.RemoteException) axisFaultException.detail;
+         }
+        if (axisFaultException.detail instanceof edu.sjsu.fly5.util.Fly5Exception) {
+              throw (edu.sjsu.fly5.util.Fly5Exception) axisFaultException.detail;
+         }
+   }
+  throw axisFaultException;
+}
+    }
+
+    public edu.sjsu.fly5.pojos.Flight[] listFlights() throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[6]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -364,40 +536,14 @@ public class FlightServiceSoapBindingStub extends org.apache.axis.client.Stub im
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public edu.sjsu.fly5.pojos.Flight searchFlight(edu.sjsu.fly5.pojos.Attribute[] searchAttributes) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[5]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "searchFlight"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {searchAttributes});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (edu.sjsu.fly5.pojos.Flight) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (edu.sjsu.fly5.pojos.Flight) org.apache.axis.utils.JavaUtils.convert(_resp, edu.sjsu.fly5.pojos.Flight.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
+    if (axisFaultException.detail != null) {
+        if (axisFaultException.detail instanceof java.rmi.RemoteException) {
+              throw (java.rmi.RemoteException) axisFaultException.detail;
+         }
+        if (axisFaultException.detail instanceof edu.sjsu.fly5.util.Fly5Exception) {
+              throw (edu.sjsu.fly5.util.Fly5Exception) axisFaultException.detail;
+         }
+   }
   throw axisFaultException;
 }
     }

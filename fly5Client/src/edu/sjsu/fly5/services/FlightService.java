@@ -8,10 +8,11 @@
 package edu.sjsu.fly5.services;
 
 public interface FlightService extends java.rmi.Remote {
-    public boolean updateFlightDetails(edu.sjsu.fly5.pojos.Flight flight) throws java.rmi.RemoteException;
-    public boolean deleteFlightDetails(java.lang.String flightId) throws java.rmi.RemoteException;
-    public boolean addFlightDetails(edu.sjsu.fly5.pojos.Flight flight) throws java.rmi.RemoteException;
-    public boolean viewFlightDetails(java.lang.String flightId) throws java.rmi.RemoteException;
-    public edu.sjsu.fly5.pojos.Flight[] listFlights() throws java.rmi.RemoteException;
-    public edu.sjsu.fly5.pojos.Flight searchFlight(edu.sjsu.fly5.pojos.Attribute[] searchAttributes) throws java.rmi.RemoteException;
+    public void addFlightDetails(edu.sjsu.fly5.pojos.Flight flight) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception;
+    public edu.sjsu.fly5.pojos.Flight viewFlightDetails(java.lang.String flightId) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception;
+    public void updateFlightDetails(edu.sjsu.fly5.pojos.Flight flight) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception;
+    public void deleteFlightDetails(java.lang.String flightId) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception;
+    public edu.sjsu.fly5.pojos.TravelerInfo[] getTravellersOnBoard(java.lang.String flightID, java.lang.String departureDate) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception;
+    public edu.sjsu.fly5.pojos.FlightInstance[] searchFlight(edu.sjsu.fly5.pojos.FlightSearchAttributes searchAttributes) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception;
+    public edu.sjsu.fly5.pojos.Flight[] listFlights() throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception;
 }

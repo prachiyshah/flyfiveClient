@@ -22,7 +22,7 @@ public class FlightServiceServiceLocator extends org.apache.axis.client.Service 
     }
 
     // Use to get a proxy class for FlightService
-    private java.lang.String FlightService_address = "http://localhost:8080/fly5Project/services/FlightService";
+    private java.lang.String FlightService_address = "http://localhost:8080/fly5/services/FlightService";
 
     public java.lang.String getFlightServiceAddress() {
         return FlightService_address;

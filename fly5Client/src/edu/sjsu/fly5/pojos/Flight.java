@@ -8,9 +8,9 @@
 package edu.sjsu.fly5.pojos;
 
 public class Flight  implements java.io.Serializable {
-    private java.lang.String arrivalTime;
+    private java.lang.String airline;
 
-    private java.lang.String availibilityDays;
+    private java.lang.String arrivalTime;
 
     private double baseFare;
 
@@ -26,7 +26,11 @@ public class Flight  implements java.io.Serializable {
 
     private java.lang.String flightStatus;
 
-    private long noOfSeats;
+    private java.lang.String frequency;
+
+    private java.lang.String journeyTime;
+
+    private int noOfSeats;
 
     private java.lang.String source;
 
@@ -34,8 +38,8 @@ public class Flight  implements java.io.Serializable {
     }
 
     public Flight(
+           java.lang.String airline,
            java.lang.String arrivalTime,
-           java.lang.String availibilityDays,
            double baseFare,
            long crewID,
            java.lang.String departureTime,
@@ -43,10 +47,12 @@ public class Flight  implements java.io.Serializable {
            long distance,
            java.lang.String flightID,
            java.lang.String flightStatus,
-           long noOfSeats,
+           java.lang.String frequency,
+           java.lang.String journeyTime,
+           int noOfSeats,
            java.lang.String source) {
+           this.airline = airline;
            this.arrivalTime = arrivalTime;
-           this.availibilityDays = availibilityDays;
            this.baseFare = baseFare;
            this.crewID = crewID;
            this.departureTime = departureTime;
@@ -54,8 +60,30 @@ public class Flight  implements java.io.Serializable {
            this.distance = distance;
            this.flightID = flightID;
            this.flightStatus = flightStatus;
+           this.frequency = frequency;
+           this.journeyTime = journeyTime;
            this.noOfSeats = noOfSeats;
            this.source = source;
+    }
+
+
+    /**
+     * Gets the airline value for this Flight.
+     * 
+     * @return airline
+     */
+    public java.lang.String getAirline() {
+        return airline;
+    }
+
+
+    /**
+     * Sets the airline value for this Flight.
+     * 
+     * @param airline
+     */
+    public void setAirline(java.lang.String airline) {
+        this.airline = airline;
     }
 
 
@@ -76,26 +104,6 @@ public class Flight  implements java.io.Serializable {
      */
     public void setArrivalTime(java.lang.String arrivalTime) {
         this.arrivalTime = arrivalTime;
-    }
-
-
-    /**
-     * Gets the availibilityDays value for this Flight.
-     * 
-     * @return availibilityDays
-     */
-    public java.lang.String getAvailibilityDays() {
-        return availibilityDays;
-    }
-
-
-    /**
-     * Sets the availibilityDays value for this Flight.
-     * 
-     * @param availibilityDays
-     */
-    public void setAvailibilityDays(java.lang.String availibilityDays) {
-        this.availibilityDays = availibilityDays;
     }
 
 
@@ -240,11 +248,51 @@ public class Flight  implements java.io.Serializable {
 
 
     /**
+     * Gets the frequency value for this Flight.
+     * 
+     * @return frequency
+     */
+    public java.lang.String getFrequency() {
+        return frequency;
+    }
+
+
+    /**
+     * Sets the frequency value for this Flight.
+     * 
+     * @param frequency
+     */
+    public void setFrequency(java.lang.String frequency) {
+        this.frequency = frequency;
+    }
+
+
+    /**
+     * Gets the journeyTime value for this Flight.
+     * 
+     * @return journeyTime
+     */
+    public java.lang.String getJourneyTime() {
+        return journeyTime;
+    }
+
+
+    /**
+     * Sets the journeyTime value for this Flight.
+     * 
+     * @param journeyTime
+     */
+    public void setJourneyTime(java.lang.String journeyTime) {
+        this.journeyTime = journeyTime;
+    }
+
+
+    /**
      * Gets the noOfSeats value for this Flight.
      * 
      * @return noOfSeats
      */
-    public long getNoOfSeats() {
+    public int getNoOfSeats() {
         return noOfSeats;
     }
 
@@ -254,7 +302,7 @@ public class Flight  implements java.io.Serializable {
      * 
      * @param noOfSeats
      */
-    public void setNoOfSeats(long noOfSeats) {
+    public void setNoOfSeats(int noOfSeats) {
         this.noOfSeats = noOfSeats;
     }
 
@@ -290,12 +338,12 @@ public class Flight  implements java.io.Serializable {
         __equalsCalc = obj;
         boolean _equals;
         _equals = true && 
+            ((this.airline==null && other.getAirline()==null) || 
+             (this.airline!=null &&
+              this.airline.equals(other.getAirline()))) &&
             ((this.arrivalTime==null && other.getArrivalTime()==null) || 
              (this.arrivalTime!=null &&
               this.arrivalTime.equals(other.getArrivalTime()))) &&
-            ((this.availibilityDays==null && other.getAvailibilityDays()==null) || 
-             (this.availibilityDays!=null &&
-              this.availibilityDays.equals(other.getAvailibilityDays()))) &&
             this.baseFare == other.getBaseFare() &&
             this.crewID == other.getCrewID() &&
             ((this.departureTime==null && other.getDepartureTime()==null) || 
@@ -311,6 +359,12 @@ public class Flight  implements java.io.Serializable {
             ((this.flightStatus==null && other.getFlightStatus()==null) || 
              (this.flightStatus!=null &&
               this.flightStatus.equals(other.getFlightStatus()))) &&
+            ((this.frequency==null && other.getFrequency()==null) || 
+             (this.frequency!=null &&
+              this.frequency.equals(other.getFrequency()))) &&
+            ((this.journeyTime==null && other.getJourneyTime()==null) || 
+             (this.journeyTime!=null &&
+              this.journeyTime.equals(other.getJourneyTime()))) &&
             this.noOfSeats == other.getNoOfSeats() &&
             ((this.source==null && other.getSource()==null) || 
              (this.source!=null &&
@@ -326,11 +380,11 @@ public class Flight  implements java.io.Serializable {
         }
         __hashCodeCalc = true;
         int _hashCode = 1;
+        if (getAirline() != null) {
+            _hashCode += getAirline().hashCode();
+        }
         if (getArrivalTime() != null) {
             _hashCode += getArrivalTime().hashCode();
-        }
-        if (getAvailibilityDays() != null) {
-            _hashCode += getAvailibilityDays().hashCode();
         }
         _hashCode += new Double(getBaseFare()).hashCode();
         _hashCode += new Long(getCrewID()).hashCode();
@@ -347,7 +401,13 @@ public class Flight  implements java.io.Serializable {
         if (getFlightStatus() != null) {
             _hashCode += getFlightStatus().hashCode();
         }
-        _hashCode += new Long(getNoOfSeats()).hashCode();
+        if (getFrequency() != null) {
+            _hashCode += getFrequency().hashCode();
+        }
+        if (getJourneyTime() != null) {
+            _hashCode += getJourneyTime().hashCode();
+        }
+        _hashCode += getNoOfSeats();
         if (getSource() != null) {
             _hashCode += getSource().hashCode();
         }
@@ -362,14 +422,14 @@ public class Flight  implements java.io.Serializable {
     static {
         typeDesc.setXmlType(new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "Flight"));
         org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("arrivalTime");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "arrivalTime"));
+        elemField.setFieldName("airline");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "airline"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("availibilityDays");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "availibilityDays"));
+        elemField.setFieldName("arrivalTime");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "arrivalTime"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
@@ -416,9 +476,21 @@ public class Flight  implements java.io.Serializable {
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("frequency");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "frequency"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setNillable(true);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("journeyTime");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "journeyTime"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setNillable(true);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("noOfSeats");
         elemField.setXmlName(new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "noOfSeats"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();

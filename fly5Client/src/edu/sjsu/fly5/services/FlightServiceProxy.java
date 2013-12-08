@@ -44,40 +44,46 @@ public class FlightServiceProxy implements edu.sjsu.fly5.services.FlightService 
     return flightService;
   }
   
-  public boolean updateFlightDetails(edu.sjsu.fly5.pojos.Flight flight) throws java.rmi.RemoteException{
+  public void addFlightDetails(edu.sjsu.fly5.pojos.Flight flight) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception{
     if (flightService == null)
       _initFlightServiceProxy();
-    return flightService.updateFlightDetails(flight);
+    flightService.addFlightDetails(flight);
   }
   
-  public boolean deleteFlightDetails(java.lang.String flightId) throws java.rmi.RemoteException{
-    if (flightService == null)
-      _initFlightServiceProxy();
-    return flightService.deleteFlightDetails(flightId);
-  }
-  
-  public boolean addFlightDetails(edu.sjsu.fly5.pojos.Flight flight) throws java.rmi.RemoteException{
-    if (flightService == null)
-      _initFlightServiceProxy();
-    return flightService.addFlightDetails(flight);
-  }
-  
-  public boolean viewFlightDetails(java.lang.String flightId) throws java.rmi.RemoteException{
+  public edu.sjsu.fly5.pojos.Flight viewFlightDetails(java.lang.String flightId) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception{
     if (flightService == null)
       _initFlightServiceProxy();
     return flightService.viewFlightDetails(flightId);
   }
   
-  public edu.sjsu.fly5.pojos.Flight[] listFlights() throws java.rmi.RemoteException{
+  public void updateFlightDetails(edu.sjsu.fly5.pojos.Flight flight) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception{
     if (flightService == null)
       _initFlightServiceProxy();
-    return flightService.listFlights();
+    flightService.updateFlightDetails(flight);
   }
   
-  public edu.sjsu.fly5.pojos.Flight searchFlight(edu.sjsu.fly5.pojos.Attribute[] searchAttributes) throws java.rmi.RemoteException{
+  public void deleteFlightDetails(java.lang.String flightId) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception{
+    if (flightService == null)
+      _initFlightServiceProxy();
+    flightService.deleteFlightDetails(flightId);
+  }
+  
+  public edu.sjsu.fly5.pojos.TravelerInfo[] getTravellersOnBoard(java.lang.String flightID, java.lang.String departureDate) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception{
+    if (flightService == null)
+      _initFlightServiceProxy();
+    return flightService.getTravellersOnBoard(flightID, departureDate);
+  }
+  
+  public edu.sjsu.fly5.pojos.FlightInstance[] searchFlight(edu.sjsu.fly5.pojos.FlightSearchAttributes searchAttributes) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception{
     if (flightService == null)
       _initFlightServiceProxy();
     return flightService.searchFlight(searchAttributes);
+  }
+  
+  public edu.sjsu.fly5.pojos.Flight[] listFlights() throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception{
+    if (flightService == null)
+      _initFlightServiceProxy();
+    return flightService.listFlights();
   }
   
   

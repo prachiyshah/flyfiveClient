@@ -7,27 +7,52 @@
 
 package edu.sjsu.fly5.pojos;
 
-public class Traveller  implements java.io.Serializable {
+public class Traveller  extends edu.sjsu.fly5.pojos.Person  implements java.io.Serializable {
     private java.lang.String nationality;
 
     private java.lang.String passportNumber;
 
-    private java.lang.String personID;
+    private java.lang.String travellerClass;
 
-    private java.lang.String travellerID;
+    private long travellerID;
+
+    private java.lang.String travellerType;
 
     public Traveller() {
     }
 
     public Traveller(
+           java.lang.String address,
+           java.lang.String city,
+           java.util.Calendar dateOfBirth,
+           java.lang.String emailAddress,
+           java.lang.String firstName,
+           java.lang.String lastName,
+           java.lang.String password,
+           long personID,
+           java.lang.String state,
+           long zipcode,
            java.lang.String nationality,
            java.lang.String passportNumber,
-           java.lang.String personID,
-           java.lang.String travellerID) {
-           this.nationality = nationality;
-           this.passportNumber = passportNumber;
-           this.personID = personID;
-           this.travellerID = travellerID;
+           java.lang.String travellerClass,
+           long travellerID,
+           java.lang.String travellerType) {
+        super(
+            address,
+            city,
+            dateOfBirth,
+            emailAddress,
+            firstName,
+            lastName,
+            password,
+            personID,
+            state,
+            zipcode);
+        this.nationality = nationality;
+        this.passportNumber = passportNumber;
+        this.travellerClass = travellerClass;
+        this.travellerID = travellerID;
+        this.travellerType = travellerType;
     }
 
 
@@ -72,22 +97,22 @@ public class Traveller  implements java.io.Serializable {
 
 
     /**
-     * Gets the personID value for this Traveller.
+     * Gets the travellerClass value for this Traveller.
      * 
-     * @return personID
+     * @return travellerClass
      */
-    public java.lang.String getPersonID() {
-        return personID;
+    public java.lang.String getTravellerClass() {
+        return travellerClass;
     }
 
 
     /**
-     * Sets the personID value for this Traveller.
+     * Sets the travellerClass value for this Traveller.
      * 
-     * @param personID
+     * @param travellerClass
      */
-    public void setPersonID(java.lang.String personID) {
-        this.personID = personID;
+    public void setTravellerClass(java.lang.String travellerClass) {
+        this.travellerClass = travellerClass;
     }
 
 
@@ -96,7 +121,7 @@ public class Traveller  implements java.io.Serializable {
      * 
      * @return travellerID
      */
-    public java.lang.String getTravellerID() {
+    public long getTravellerID() {
         return travellerID;
     }
 
@@ -106,8 +131,28 @@ public class Traveller  implements java.io.Serializable {
      * 
      * @param travellerID
      */
-    public void setTravellerID(java.lang.String travellerID) {
+    public void setTravellerID(long travellerID) {
         this.travellerID = travellerID;
+    }
+
+
+    /**
+     * Gets the travellerType value for this Traveller.
+     * 
+     * @return travellerType
+     */
+    public java.lang.String getTravellerType() {
+        return travellerType;
+    }
+
+
+    /**
+     * Sets the travellerType value for this Traveller.
+     * 
+     * @param travellerType
+     */
+    public void setTravellerType(java.lang.String travellerType) {
+        this.travellerType = travellerType;
     }
 
     private java.lang.Object __equalsCalc = null;
@@ -121,19 +166,20 @@ public class Traveller  implements java.io.Serializable {
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
+        _equals = super.equals(obj) && 
             ((this.nationality==null && other.getNationality()==null) || 
              (this.nationality!=null &&
               this.nationality.equals(other.getNationality()))) &&
             ((this.passportNumber==null && other.getPassportNumber()==null) || 
              (this.passportNumber!=null &&
               this.passportNumber.equals(other.getPassportNumber()))) &&
-            ((this.personID==null && other.getPersonID()==null) || 
-             (this.personID!=null &&
-              this.personID.equals(other.getPersonID()))) &&
-            ((this.travellerID==null && other.getTravellerID()==null) || 
-             (this.travellerID!=null &&
-              this.travellerID.equals(other.getTravellerID())));
+            ((this.travellerClass==null && other.getTravellerClass()==null) || 
+             (this.travellerClass!=null &&
+              this.travellerClass.equals(other.getTravellerClass()))) &&
+            this.travellerID == other.getTravellerID() &&
+            ((this.travellerType==null && other.getTravellerType()==null) || 
+             (this.travellerType!=null &&
+              this.travellerType.equals(other.getTravellerType())));
         __equalsCalc = null;
         return _equals;
     }
@@ -144,18 +190,19 @@ public class Traveller  implements java.io.Serializable {
             return 0;
         }
         __hashCodeCalc = true;
-        int _hashCode = 1;
+        int _hashCode = super.hashCode();
         if (getNationality() != null) {
             _hashCode += getNationality().hashCode();
         }
         if (getPassportNumber() != null) {
             _hashCode += getPassportNumber().hashCode();
         }
-        if (getPersonID() != null) {
-            _hashCode += getPersonID().hashCode();
+        if (getTravellerClass() != null) {
+            _hashCode += getTravellerClass().hashCode();
         }
-        if (getTravellerID() != null) {
-            _hashCode += getTravellerID().hashCode();
+        _hashCode += new Long(getTravellerID()).hashCode();
+        if (getTravellerType() != null) {
+            _hashCode += getTravellerType().hashCode();
         }
         __hashCodeCalc = false;
         return _hashCode;
@@ -180,14 +227,20 @@ public class Traveller  implements java.io.Serializable {
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("personID");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "personID"));
+        elemField.setFieldName("travellerClass");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "travellerClass"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("travellerID");
         elemField.setXmlName(new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "travellerID"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"));
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("travellerType");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "travellerType"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);

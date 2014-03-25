@@ -8,13 +8,13 @@
 package edu.sjsu.fly5.pojos;
 
 public class Journey  implements java.io.Serializable {
-    private java.util.Calendar arrivalDate;
+    private java.lang.String arrivalDate;
 
     private java.lang.String arrivalTime;
 
-    private java.lang.String bookingReferenceNo;
+    private int bookingReferenceNo;
 
-    private java.util.Calendar departureDate;
+    private java.lang.String departureDate;
 
     private java.lang.String departureTime;
 
@@ -23,6 +23,8 @@ public class Journey  implements java.io.Serializable {
     private edu.sjsu.fly5.pojos.Flight[] listOfFlights;
 
     private edu.sjsu.fly5.pojos.Traveller[] listOfTraveller;
+
+    private int noOfTraveller;
 
     private java.lang.String source;
 
@@ -36,14 +38,15 @@ public class Journey  implements java.io.Serializable {
     }
 
     public Journey(
-           java.util.Calendar arrivalDate,
+           java.lang.String arrivalDate,
            java.lang.String arrivalTime,
-           java.lang.String bookingReferenceNo,
-           java.util.Calendar departureDate,
+           int bookingReferenceNo,
+           java.lang.String departureDate,
            java.lang.String departureTime,
            java.lang.String destination,
            edu.sjsu.fly5.pojos.Flight[] listOfFlights,
            edu.sjsu.fly5.pojos.Traveller[] listOfTraveller,
+           int noOfTraveller,
            java.lang.String source,
            double totalPrice,
            java.lang.String typeOfClass,
@@ -56,6 +59,7 @@ public class Journey  implements java.io.Serializable {
            this.destination = destination;
            this.listOfFlights = listOfFlights;
            this.listOfTraveller = listOfTraveller;
+           this.noOfTraveller = noOfTraveller;
            this.source = source;
            this.totalPrice = totalPrice;
            this.typeOfClass = typeOfClass;
@@ -68,7 +72,7 @@ public class Journey  implements java.io.Serializable {
      * 
      * @return arrivalDate
      */
-    public java.util.Calendar getArrivalDate() {
+    public java.lang.String getArrivalDate() {
         return arrivalDate;
     }
 
@@ -78,7 +82,7 @@ public class Journey  implements java.io.Serializable {
      * 
      * @param arrivalDate
      */
-    public void setArrivalDate(java.util.Calendar arrivalDate) {
+    public void setArrivalDate(java.lang.String arrivalDate) {
         this.arrivalDate = arrivalDate;
     }
 
@@ -108,7 +112,7 @@ public class Journey  implements java.io.Serializable {
      * 
      * @return bookingReferenceNo
      */
-    public java.lang.String getBookingReferenceNo() {
+    public int getBookingReferenceNo() {
         return bookingReferenceNo;
     }
 
@@ -118,7 +122,7 @@ public class Journey  implements java.io.Serializable {
      * 
      * @param bookingReferenceNo
      */
-    public void setBookingReferenceNo(java.lang.String bookingReferenceNo) {
+    public void setBookingReferenceNo(int bookingReferenceNo) {
         this.bookingReferenceNo = bookingReferenceNo;
     }
 
@@ -128,7 +132,7 @@ public class Journey  implements java.io.Serializable {
      * 
      * @return departureDate
      */
-    public java.util.Calendar getDepartureDate() {
+    public java.lang.String getDepartureDate() {
         return departureDate;
     }
 
@@ -138,7 +142,7 @@ public class Journey  implements java.io.Serializable {
      * 
      * @param departureDate
      */
-    public void setDepartureDate(java.util.Calendar departureDate) {
+    public void setDepartureDate(java.lang.String departureDate) {
         this.departureDate = departureDate;
     }
 
@@ -220,6 +224,26 @@ public class Journey  implements java.io.Serializable {
      */
     public void setListOfTraveller(edu.sjsu.fly5.pojos.Traveller[] listOfTraveller) {
         this.listOfTraveller = listOfTraveller;
+    }
+
+
+    /**
+     * Gets the noOfTraveller value for this Journey.
+     * 
+     * @return noOfTraveller
+     */
+    public int getNoOfTraveller() {
+        return noOfTraveller;
+    }
+
+
+    /**
+     * Sets the noOfTraveller value for this Journey.
+     * 
+     * @param noOfTraveller
+     */
+    public void setNoOfTraveller(int noOfTraveller) {
+        this.noOfTraveller = noOfTraveller;
     }
 
 
@@ -320,9 +344,7 @@ public class Journey  implements java.io.Serializable {
             ((this.arrivalTime==null && other.getArrivalTime()==null) || 
              (this.arrivalTime!=null &&
               this.arrivalTime.equals(other.getArrivalTime()))) &&
-            ((this.bookingReferenceNo==null && other.getBookingReferenceNo()==null) || 
-             (this.bookingReferenceNo!=null &&
-              this.bookingReferenceNo.equals(other.getBookingReferenceNo()))) &&
+            this.bookingReferenceNo == other.getBookingReferenceNo() &&
             ((this.departureDate==null && other.getDepartureDate()==null) || 
              (this.departureDate!=null &&
               this.departureDate.equals(other.getDepartureDate()))) &&
@@ -338,6 +360,7 @@ public class Journey  implements java.io.Serializable {
             ((this.listOfTraveller==null && other.getListOfTraveller()==null) || 
              (this.listOfTraveller!=null &&
               java.util.Arrays.equals(this.listOfTraveller, other.getListOfTraveller()))) &&
+            this.noOfTraveller == other.getNoOfTraveller() &&
             ((this.source==null && other.getSource()==null) || 
              (this.source!=null &&
               this.source.equals(other.getSource()))) &&
@@ -365,9 +388,7 @@ public class Journey  implements java.io.Serializable {
         if (getArrivalTime() != null) {
             _hashCode += getArrivalTime().hashCode();
         }
-        if (getBookingReferenceNo() != null) {
-            _hashCode += getBookingReferenceNo().hashCode();
-        }
+        _hashCode += getBookingReferenceNo();
         if (getDepartureDate() != null) {
             _hashCode += getDepartureDate().hashCode();
         }
@@ -399,6 +420,7 @@ public class Journey  implements java.io.Serializable {
                 }
             }
         }
+        _hashCode += getNoOfTraveller();
         if (getSource() != null) {
             _hashCode += getSource().hashCode();
         }
@@ -422,7 +444,7 @@ public class Journey  implements java.io.Serializable {
         org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("arrivalDate");
         elemField.setXmlName(new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "arrivalDate"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "dateTime"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
@@ -434,13 +456,13 @@ public class Journey  implements java.io.Serializable {
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("bookingReferenceNo");
         elemField.setXmlName(new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "bookingReferenceNo"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(true);
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"));
+        elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("departureDate");
         elemField.setXmlName(new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "departureDate"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "dateTime"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
@@ -468,6 +490,12 @@ public class Journey  implements java.io.Serializable {
         elemField.setXmlType(new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "Traveller"));
         elemField.setNillable(true);
         elemField.setItemQName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "item"));
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("noOfTraveller");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "noOfTraveller"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"));
+        elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("source");

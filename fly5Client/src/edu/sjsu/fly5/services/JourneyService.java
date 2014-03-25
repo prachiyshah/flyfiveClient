@@ -8,9 +8,10 @@
 package edu.sjsu.fly5.services;
 
 public interface JourneyService extends java.rmi.Remote {
+    public boolean bookJourney(edu.sjsu.fly5.pojos.Traveller[] traveller, edu.sjsu.fly5.pojos.FlightInstance[] flightInstance, edu.sjsu.fly5.pojos.PaymentDetails paymentDetails, edu.sjsu.fly5.pojos.Person[] person) throws java.rmi.RemoteException;
+    public boolean cancelJourney(int bookingId) throws java.rmi.RemoteException;
     public edu.sjsu.fly5.pojos.Journey[] listAllJourneys() throws java.rmi.RemoteException;
-    public boolean rescheduleJourney(java.lang.String bookingId) throws java.rmi.RemoteException;
+    public edu.sjsu.fly5.pojos.Journey[] listAllJourney(java.lang.String userName) throws java.rmi.RemoteException;
+    public boolean rescheduleJourney(java.lang.String bookingId, edu.sjsu.fly5.pojos.Journey journey) throws java.rmi.RemoteException;
     public edu.sjsu.fly5.pojos.Journey generateItinerary(long bookingReferenceNo, java.lang.String lastName) throws java.rmi.RemoteException;
-    public boolean bookJourney(edu.sjsu.fly5.pojos.Traveller traveller, edu.sjsu.fly5.pojos.Flight flight, edu.sjsu.fly5.pojos.PaymentDetails paymentDetails) throws java.rmi.RemoteException;
-    public boolean cancelJourney(java.lang.String bookingId) throws java.rmi.RemoteException;
 }

@@ -22,7 +22,7 @@ public class JourneyServiceServiceLocator extends org.apache.axis.client.Service
     }
 
     // Use to get a proxy class for JourneyService
-    private java.lang.String JourneyService_address = "http://localhost/fly5Project/services/JourneyService";
+    private java.lang.String JourneyService_address = "http://localhost:8080/fly5/services/JourneyService";
 
     public java.lang.String getJourneyServiceAddress() {
         return JourneyService_address;

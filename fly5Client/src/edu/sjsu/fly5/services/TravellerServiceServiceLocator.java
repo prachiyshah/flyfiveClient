@@ -22,7 +22,7 @@ public class TravellerServiceServiceLocator extends org.apache.axis.client.Servi
     }
 
     // Use to get a proxy class for TravellerService
-    private java.lang.String TravellerService_address = "http://localhost/fly5Project/services/TravellerService";
+    private java.lang.String TravellerService_address = "http://localhost:8080/fly5/services/TravellerService";
 
     public java.lang.String getTravellerServiceAddress() {
         return TravellerService_address;

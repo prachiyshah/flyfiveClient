@@ -16,7 +16,7 @@ public class JourneyServiceSoapBindingStub extends org.apache.axis.client.Stub i
     static org.apache.axis.description.OperationDesc [] _operations;
 
     static {
-        _operations = new org.apache.axis.description.OperationDesc[5];
+        _operations = new org.apache.axis.description.OperationDesc[6];
         _initOperationDesc1();
     }
 
@@ -24,24 +24,65 @@ public class JourneyServiceSoapBindingStub extends org.apache.axis.client.Stub i
         org.apache.axis.description.OperationDesc oper;
         org.apache.axis.description.ParameterDesc param;
         oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("bookJourney");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "traveller"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "Traveller"), edu.sjsu.fly5.pojos.Traveller[].class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "flightInstance"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "FlightInstance"), edu.sjsu.fly5.pojos.FlightInstance[].class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "paymentDetails"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "PaymentDetails"), edu.sjsu.fly5.pojos.PaymentDetails.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "person"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "Person"), edu.sjsu.fly5.pojos.Person[].class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "boolean"));
+        oper.setReturnClass(boolean.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "bookJourneyReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[0] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("cancelJourney");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "bookingId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "boolean"));
+        oper.setReturnClass(boolean.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "cancelJourneyReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[1] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
         oper.setName("listAllJourneys");
         oper.setReturnType(new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "Journey"));
         oper.setReturnClass(edu.sjsu.fly5.pojos.Journey[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "listAllJourneysReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[0] = oper;
+        _operations[2] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("listAllJourney");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "userName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "Journey"));
+        oper.setReturnClass(edu.sjsu.fly5.pojos.Journey[].class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "listAllJourneyReturn"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[3] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("rescheduleJourney");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "bookingId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        oper.addParameter(param);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "journey"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "Journey"), edu.sjsu.fly5.pojos.Journey.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "boolean"));
         oper.setReturnClass(boolean.class);
         oper.setReturnQName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "rescheduleJourneyReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[1] = oper;
+        _operations[4] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("generateItinerary");
@@ -54,33 +95,7 @@ public class JourneyServiceSoapBindingStub extends org.apache.axis.client.Stub i
         oper.setReturnQName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "generateItineraryReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[2] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("bookJourney");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "traveller"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "Traveller"), edu.sjsu.fly5.pojos.Traveller.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "flight"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "Flight"), edu.sjsu.fly5.pojos.Flight.class, false, false);
-        oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "paymentDetails"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "PaymentDetails"), edu.sjsu.fly5.pojos.PaymentDetails.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "boolean"));
-        oper.setReturnClass(boolean.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "bookJourneyReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[3] = oper;
-
-        oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("cancelJourney");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "bookingId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
-        oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "boolean"));
-        oper.setReturnClass(boolean.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "cancelJourneyReturn"));
-        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
-        _operations[4] = oper;
+        _operations[5] = oper;
 
     }
 
@@ -120,6 +135,13 @@ public class JourneyServiceSoapBindingStub extends org.apache.axis.client.Stub i
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
+            qName = new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "FlightInstance");
+            cachedSerQNames.add(qName);
+            cls = edu.sjsu.fly5.pojos.FlightInstance.class;
+            cachedSerClasses.add(cls);
+            cachedSerFactories.add(beansf);
+            cachedDeserFactories.add(beandf);
+
             qName = new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "Journey");
             cachedSerQNames.add(qName);
             cls = edu.sjsu.fly5.pojos.Journey.class;
@@ -130,6 +152,13 @@ public class JourneyServiceSoapBindingStub extends org.apache.axis.client.Stub i
             qName = new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "PaymentDetails");
             cachedSerQNames.add(qName);
             cls = edu.sjsu.fly5.pojos.PaymentDetails.class;
+            cachedSerClasses.add(cls);
+            cachedSerFactories.add(beansf);
+            cachedDeserFactories.add(beandf);
+
+            qName = new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "Person");
+            cachedSerQNames.add(qName);
+            cls = edu.sjsu.fly5.pojos.Person.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
@@ -225,12 +254,80 @@ public class JourneyServiceSoapBindingStub extends org.apache.axis.client.Stub i
         }
     }
 
-    public edu.sjsu.fly5.pojos.Journey[] listAllJourneys() throws java.rmi.RemoteException {
+    public boolean bookJourney(edu.sjsu.fly5.pojos.Traveller[] traveller, edu.sjsu.fly5.pojos.FlightInstance[] flightInstance, edu.sjsu.fly5.pojos.PaymentDetails paymentDetails, edu.sjsu.fly5.pojos.Person[] person) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
         _call.setOperation(_operations[0]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "bookJourney"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {traveller, flightInstance, paymentDetails, person});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return ((java.lang.Boolean) _resp).booleanValue();
+            } catch (java.lang.Exception _exception) {
+                return ((java.lang.Boolean) org.apache.axis.utils.JavaUtils.convert(_resp, boolean.class)).booleanValue();
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public boolean cancelJourney(int bookingId) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[1]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "cancelJourney"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(bookingId)});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return ((java.lang.Boolean) _resp).booleanValue();
+            } catch (java.lang.Exception _exception) {
+                return ((java.lang.Boolean) org.apache.axis.utils.JavaUtils.convert(_resp, boolean.class)).booleanValue();
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public edu.sjsu.fly5.pojos.Journey[] listAllJourneys() throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[2]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -259,12 +356,46 @@ public class JourneyServiceSoapBindingStub extends org.apache.axis.client.Stub i
 }
     }
 
-    public boolean rescheduleJourney(java.lang.String bookingId) throws java.rmi.RemoteException {
+    public edu.sjsu.fly5.pojos.Journey[] listAllJourney(java.lang.String userName) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[1]);
+        _call.setOperation(_operations[3]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "listAllJourney"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {userName});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (edu.sjsu.fly5.pojos.Journey[]) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (edu.sjsu.fly5.pojos.Journey[]) org.apache.axis.utils.JavaUtils.convert(_resp, edu.sjsu.fly5.pojos.Journey[].class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public boolean rescheduleJourney(java.lang.String bookingId, edu.sjsu.fly5.pojos.Journey journey) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[4]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -275,7 +406,7 @@ public class JourneyServiceSoapBindingStub extends org.apache.axis.client.Stub i
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {bookingId});
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {bookingId, journey});
 
         if (_resp instanceof java.rmi.RemoteException) {
             throw (java.rmi.RemoteException)_resp;
@@ -298,7 +429,7 @@ public class JourneyServiceSoapBindingStub extends org.apache.axis.client.Stub i
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[2]);
+        _call.setOperation(_operations[5]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setEncodingStyle(null);
@@ -320,74 +451,6 @@ public class JourneyServiceSoapBindingStub extends org.apache.axis.client.Stub i
                 return (edu.sjsu.fly5.pojos.Journey) _resp;
             } catch (java.lang.Exception _exception) {
                 return (edu.sjsu.fly5.pojos.Journey) org.apache.axis.utils.JavaUtils.convert(_resp, edu.sjsu.fly5.pojos.Journey.class);
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public boolean bookJourney(edu.sjsu.fly5.pojos.Traveller traveller, edu.sjsu.fly5.pojos.Flight flight, edu.sjsu.fly5.pojos.PaymentDetails paymentDetails) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[3]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "bookJourney"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {traveller, flight, paymentDetails});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return ((java.lang.Boolean) _resp).booleanValue();
-            } catch (java.lang.Exception _exception) {
-                return ((java.lang.Boolean) org.apache.axis.utils.JavaUtils.convert(_resp, boolean.class)).booleanValue();
-            }
-        }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
-    }
-
-    public boolean cancelJourney(java.lang.String bookingId) throws java.rmi.RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
-        }
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(_operations[4]);
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("");
-        _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://services.fly5.sjsu.edu", "cancelJourney"));
-
-        setRequestHeaders(_call);
-        setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {bookingId});
-
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return ((java.lang.Boolean) _resp).booleanValue();
-            } catch (java.lang.Exception _exception) {
-                return ((java.lang.Boolean) org.apache.axis.utils.JavaUtils.convert(_resp, boolean.class)).booleanValue();
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {

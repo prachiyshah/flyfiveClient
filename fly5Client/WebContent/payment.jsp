@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/user.css">
-<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.7.2.js"></script>
 <title>Fly5 Airlines</title>
 </head>
 <body>
@@ -32,7 +32,8 @@
 				<label class="control-label">${error}</label>
 			</div>
 			<div class="payment">
-			    <form method="post" action="payment.do" class="payment-form">
+			    <form method="post" action="journey.do" class="payment-form">
+			    <input type="hidden" name="action" value="insertPaymentDetails">
 			    	<label class="control-label">Payment Details</label>
 			    	<input class="form-control" placeholder="Credit Card Number" name="ccno">
 			    	<input class="form-control" placeholder="CVV" name="cvv">

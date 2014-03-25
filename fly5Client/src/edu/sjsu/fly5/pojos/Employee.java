@@ -7,16 +7,14 @@
 
 package edu.sjsu.fly5.pojos;
 
-public class Employee  implements java.io.Serializable {
+public class Employee  extends edu.sjsu.fly5.pojos.Person  implements java.io.Serializable {
     private long crewID;
 
     private java.lang.String designation;
 
-    private java.lang.String employeeID;
+    private long employeeID;
 
     private java.util.Calendar hireDate;
-
-    private java.lang.String personID;
 
     private java.lang.String workDescription;
 
@@ -24,18 +22,37 @@ public class Employee  implements java.io.Serializable {
     }
 
     public Employee(
+           java.lang.String address,
+           java.lang.String city,
+           java.util.Calendar dateOfBirth,
+           java.lang.String emailAddress,
+           java.lang.String firstName,
+           java.lang.String lastName,
+           java.lang.String password,
+           long personID,
+           java.lang.String state,
+           long zipcode,
            long crewID,
            java.lang.String designation,
-           java.lang.String employeeID,
+           long employeeID,
            java.util.Calendar hireDate,
-           java.lang.String personID,
            java.lang.String workDescription) {
-           this.crewID = crewID;
-           this.designation = designation;
-           this.employeeID = employeeID;
-           this.hireDate = hireDate;
-           this.personID = personID;
-           this.workDescription = workDescription;
+        super(
+            address,
+            city,
+            dateOfBirth,
+            emailAddress,
+            firstName,
+            lastName,
+            password,
+            personID,
+            state,
+            zipcode);
+        this.crewID = crewID;
+        this.designation = designation;
+        this.employeeID = employeeID;
+        this.hireDate = hireDate;
+        this.workDescription = workDescription;
     }
 
 
@@ -84,7 +101,7 @@ public class Employee  implements java.io.Serializable {
      * 
      * @return employeeID
      */
-    public java.lang.String getEmployeeID() {
+    public long getEmployeeID() {
         return employeeID;
     }
 
@@ -94,7 +111,7 @@ public class Employee  implements java.io.Serializable {
      * 
      * @param employeeID
      */
-    public void setEmployeeID(java.lang.String employeeID) {
+    public void setEmployeeID(long employeeID) {
         this.employeeID = employeeID;
     }
 
@@ -116,26 +133,6 @@ public class Employee  implements java.io.Serializable {
      */
     public void setHireDate(java.util.Calendar hireDate) {
         this.hireDate = hireDate;
-    }
-
-
-    /**
-     * Gets the personID value for this Employee.
-     * 
-     * @return personID
-     */
-    public java.lang.String getPersonID() {
-        return personID;
-    }
-
-
-    /**
-     * Sets the personID value for this Employee.
-     * 
-     * @param personID
-     */
-    public void setPersonID(java.lang.String personID) {
-        this.personID = personID;
     }
 
 
@@ -169,20 +166,15 @@ public class Employee  implements java.io.Serializable {
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
+        _equals = super.equals(obj) && 
             this.crewID == other.getCrewID() &&
             ((this.designation==null && other.getDesignation()==null) || 
              (this.designation!=null &&
               this.designation.equals(other.getDesignation()))) &&
-            ((this.employeeID==null && other.getEmployeeID()==null) || 
-             (this.employeeID!=null &&
-              this.employeeID.equals(other.getEmployeeID()))) &&
+            this.employeeID == other.getEmployeeID() &&
             ((this.hireDate==null && other.getHireDate()==null) || 
              (this.hireDate!=null &&
               this.hireDate.equals(other.getHireDate()))) &&
-            ((this.personID==null && other.getPersonID()==null) || 
-             (this.personID!=null &&
-              this.personID.equals(other.getPersonID()))) &&
             ((this.workDescription==null && other.getWorkDescription()==null) || 
              (this.workDescription!=null &&
               this.workDescription.equals(other.getWorkDescription())));
@@ -196,19 +188,14 @@ public class Employee  implements java.io.Serializable {
             return 0;
         }
         __hashCodeCalc = true;
-        int _hashCode = 1;
+        int _hashCode = super.hashCode();
         _hashCode += new Long(getCrewID()).hashCode();
         if (getDesignation() != null) {
             _hashCode += getDesignation().hashCode();
         }
-        if (getEmployeeID() != null) {
-            _hashCode += getEmployeeID().hashCode();
-        }
+        _hashCode += new Long(getEmployeeID()).hashCode();
         if (getHireDate() != null) {
             _hashCode += getHireDate().hashCode();
-        }
-        if (getPersonID() != null) {
-            _hashCode += getPersonID().hashCode();
         }
         if (getWorkDescription() != null) {
             _hashCode += getWorkDescription().hashCode();
@@ -238,19 +225,13 @@ public class Employee  implements java.io.Serializable {
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("employeeID");
         elemField.setXmlName(new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "employeeID"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(true);
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"));
+        elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("hireDate");
         elemField.setXmlName(new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "hireDate"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "dateTime"));
-        elemField.setNillable(true);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("personID");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "personID"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();

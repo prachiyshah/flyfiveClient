@@ -22,12 +22,15 @@
 		<div>
 	
 		</div>
-			<form class="form-signin" action="SignUp.do" method="post">
+			<form class="form-signin" action="profile.do" method="post">
+			<input type = "hidden" name = "action" value = "add">
 				<fieldset>
 					<legend>Sign Up</legend>
 					<div class="has-error">
 					<label class="control-label">${error}</label>
-					</div>
+					<%if(request.getAttribute("massege")!=null){%>
+			<%=request.getAttribute("massege") %>		<%} %>
+					</div>	
 					<input type="text" class="form-control" name="fname" placeholder="First Name"
 						required autofocus><input type="text" class="form-control" name="lname" placeholder="Last Name"
 						required autofocus><input type="date" class="form-control" id="dob" name="dob" placeholder="Date of Birth" required autofocus><input type="text" class="form-control" name="street" placeholder="Street"

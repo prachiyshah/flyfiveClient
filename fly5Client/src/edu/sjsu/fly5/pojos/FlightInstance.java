@@ -26,7 +26,7 @@ public class FlightInstance  implements java.io.Serializable {
 
     private java.lang.String flight_no;
 
-    private float journeyTime;
+    private java.lang.String journeyTime;
 
     private java.lang.String source;
 
@@ -47,7 +47,7 @@ public class FlightInstance  implements java.io.Serializable {
            java.lang.String destination,
            float distance,
            java.lang.String flight_no,
-           float journeyTime,
+           java.lang.String journeyTime,
            java.lang.String source,
            int totalSeats,
            java.lang.String travelClass) {
@@ -252,7 +252,7 @@ public class FlightInstance  implements java.io.Serializable {
      * 
      * @return journeyTime
      */
-    public float getJourneyTime() {
+    public java.lang.String getJourneyTime() {
         return journeyTime;
     }
 
@@ -262,7 +262,7 @@ public class FlightInstance  implements java.io.Serializable {
      * 
      * @param journeyTime
      */
-    public void setJourneyTime(float journeyTime) {
+    public void setJourneyTime(java.lang.String journeyTime) {
         this.journeyTime = journeyTime;
     }
 
@@ -359,7 +359,9 @@ public class FlightInstance  implements java.io.Serializable {
             ((this.flight_no==null && other.getFlight_no()==null) || 
              (this.flight_no!=null &&
               this.flight_no.equals(other.getFlight_no()))) &&
-            this.journeyTime == other.getJourneyTime() &&
+            ((this.journeyTime==null && other.getJourneyTime()==null) || 
+             (this.journeyTime!=null &&
+              this.journeyTime.equals(other.getJourneyTime()))) &&
             ((this.source==null && other.getSource()==null) || 
              (this.source!=null &&
               this.source.equals(other.getSource()))) &&
@@ -399,7 +401,9 @@ public class FlightInstance  implements java.io.Serializable {
         if (getFlight_no() != null) {
             _hashCode += getFlight_no().hashCode();
         }
-        _hashCode += new Float(getJourneyTime()).hashCode();
+        if (getJourneyTime() != null) {
+            _hashCode += getJourneyTime().hashCode();
+        }
         if (getSource() != null) {
             _hashCode += getSource().hashCode();
         }
@@ -474,8 +478,8 @@ public class FlightInstance  implements java.io.Serializable {
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("journeyTime");
         elemField.setXmlName(new javax.xml.namespace.QName("http://pojos.fly5.sjsu.edu", "journeyTime"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "float"));
-        elemField.setNillable(false);
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("source");

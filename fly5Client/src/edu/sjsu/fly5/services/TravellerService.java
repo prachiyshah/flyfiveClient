@@ -8,10 +8,10 @@
 package edu.sjsu.fly5.services;
 
 public interface TravellerService extends java.rmi.Remote {
-    public boolean addTraveller(edu.sjsu.fly5.pojos.Traveller traveller) throws java.rmi.RemoteException;
-    public edu.sjsu.fly5.pojos.Traveller[] listTravellers() throws java.rmi.RemoteException;
-    public edu.sjsu.fly5.pojos.Traveller viewTravellerInfo(long travellerId) throws java.rmi.RemoteException;
-    public boolean updateTraveller(edu.sjsu.fly5.pojos.Traveller traveller) throws java.rmi.RemoteException;
-    public boolean removeTraveller(long travellerId) throws java.rmi.RemoteException;
-    public boolean authenticateTraveller(java.lang.String email, java.lang.String password) throws java.rmi.RemoteException;
+    public boolean addTraveller(edu.sjsu.fly5.pojos.Person person, edu.sjsu.fly5.pojos.Traveller traveller) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception;
+    public boolean updateTraveller(edu.sjsu.fly5.pojos.Person person, edu.sjsu.fly5.pojos.Traveller traveller) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception;
+    public boolean removeTraveller(long travellerId) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception;
+    public edu.sjsu.fly5.pojos.Traveller viewTravellerInfo(long travellerId) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception;
+    public edu.sjsu.fly5.pojos.Traveller[] listTravellers() throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception;
+    public int authenticateTraveller(java.lang.String email, java.lang.String password) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception;
 }

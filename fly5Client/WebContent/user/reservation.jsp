@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!doctype html>
+
+<%@ page import="edu.sjsu.fly5.manager.JourneyManager" %>
+<%@ page import="edu.sjsu.fly5.pojos.*" %>
+<%@ page import="java.util.Calendar" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+
+<%JourneyManager journeyManager=new JourneyManager();%>
+<%String userName = (String)session.getAttribute("email"); %>
+<%Journey[] listById=journeyManager.listAllJourney(userName); %>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -38,49 +47,47 @@
 						<th>Total Amount ($)</th>
 					</tr>
 				</table>
+				<% if (listById != null) { for(int i=0;i<listById.length;i++) {%>
+				
 				<div class="row reservation-item">
 					<div class="col-md-2">
 						<a class="btn glyphicon glyphicon-arrow-down" href="#"
-							onclick="expand('#AWF5102135');"> </a> AWF5102135
+							onclick="expand('#<%=listById[i].getBookingReferenceNo() %>');"> </a> <%=listById[i].getBookingReferenceNo() %>
 					</div>
-					<div class="col-md-2">SJC</div>
-					<div class="col-md-1" style="text-align: left;">LAX</div>
-					<div class="col-md-1">11/26/13</div>
-					<div class="col-md-2">12/12/13</div>
-					<div class="col-md-2">5</div>
-					<div class="col-md-2">600</div>
+					<%String arrivaldt=listById[i].getArrivalDate().substring(0,10); %>
+					<%String depDt=listById[i].getDepartureDate().substring(0,10); %>
+					<div class="col-md-2"><%=listById[i].getSource() %></div>
+					<div class="col-md-1" style="text-align: left;"><%=listById[i].getDestination() %></div>
+					<div class="col-md-1"><%=depDt%></div>
+					<div class="col-md-2"><%=arrivaldt %></div>
+					<div class="col-md-2"><%=listById[i].getNoOfTraveller() %></div>
+					<div class="col-md-2"><%=listById[i].getTotalPrice() %></div>
 				</div>
+				<%Traveller[] listOfTravellers=listById[i].getListOfTraveller(); %>
 				<hr>
-				<div id="AWF5102135" class="collapse-group">
+				
+				<%for ( int j=0;j<listOfTravellers.length;j++){ %>
+				<%Calendar dob=listOfTravellers[j].getDateOfBirth(); %>
+					<%String dateOfBirth=null;
+					SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+					if(dob!=null)
+					{
+						dateOfBirth = sdf.format(dob.getTime());
+					}
+					%>
+				<div id="<%=listById[i].getBookingReferenceNo() %>" class="collapse-group">
 					<div class="collapse expander">
-						<p>Hi Joel here</p>
-						<p>Hi Joel here</p>
-						<p>Hi Joel here</p>
-						<p>Hi Joel here</p>
-						<p>Hi Joel here</p>
-						<p>Hi Joel here</p>
-						<p>Hi Joel here</p>
+						<p></p>
+						<p><%=listOfTravellers[j].getFirstName() %></p>
+						<p><%=listOfTravellers[j].getLastName() %></p>
+						<p><%=dateOfBirth%></p>
+						<p><%=listOfTravellers[j].getPassportNumber() %></p>
+						<p><%=listOfTravellers[j].getNationality() %></p>
 					</div>
-				</div>
-				<hr>
-				<div class="row reservation-item">
-					<div class="col-md-2">
-						<a class="btn glyphicon glyphicon-arrow-down" href="#"
-							onclick="expand('#AWF5102455');"> </a> AWF5102455
-					</div>
-					<div class="col-md-2">SJC</div>
-					<div class="col-md-1" style="text-align: left;">LAX</div>
-					<div class="col-md-1">11/26/13</div>
-					<div class="col-md-2">12/12/13</div>
-					<div class="col-md-2">5</div>
-					<div class="col-md-2">600</div>
-				</div>
-				<hr>
-				<div id="AWF5102455" class="collapse-group">
-					<div class="collapse expander">
-						<p>Hi /**/ here</p>
-					</div>
-				</div>
+				</div> 
+				<%} %>
+				<%}} %>
+				
 			</div>
 
 		</section>

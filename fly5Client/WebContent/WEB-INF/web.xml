@@ -22,6 +22,38 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>FlightSearchServlet</servlet-name>
-    <url-pattern>/FlightSearchServlet</url-pattern>
+    <url-pattern>/search.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EmployeeServlet</display-name>
+    <servlet-name>EmployeeServlet</servlet-name>
+    <servlet-class>edu.sjsu.fly5.controller.EmployeeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmployeeServlet</servlet-name>
+    <url-pattern>/admin/employee.do</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <description></description>
+    <display-name>TravellerController</display-name>
+    <servlet-name>TravellerController</servlet-name>
+    <servlet-class>edu.sjsu.fly5.controller.TravellerController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TravellerController</servlet-name>
+    <url-pattern>/user/profile.do</url-pattern>
+    <url-pattern>/admin/customer.do</url-pattern>
+    <url-pattern>/profile.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>JourneyServlet</display-name>
+    <servlet-name>JourneyServlet</servlet-name>
+    <servlet-class>edu.sjsu.fly5.controller.JourneyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>JourneyServlet</servlet-name>
+    <url-pattern>/journey.do</url-pattern>
   </servlet-mapping>
 </web-app>

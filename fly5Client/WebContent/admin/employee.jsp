@@ -1,6 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!doctype html>
+<%@page import="edu.sjsu.fly5.manager.EmployeeManager"%>
+<%@page import="edu.sjsu.fly5.manager.CrewManager"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="java.text.SimpleDateFormat" %>
+<%@page import="edu.sjsu.fly5.pojos.Employee"%>
+<%@page import="edu.sjsu.fly5.pojos.Crew"%>
+<%EmployeeManager employeeManager= new EmployeeManager(); %>
+<%Employee[] list=employeeManager.listOfEmployees(); %>        
+<%CrewManager crewManager = new CrewManager(); %>
+<%Crew[] listOfCrew=crewManager.listOfCrews(); %>
+
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -23,13 +34,14 @@
 			<ul class="nav nav-pills" id="myTab">
 				<li><a href="flight.jsp">Flight</a></li>
 				<li class="active"><a href="employee.jsp">Employee</a></li>
+				<li><a href="employee-search.jsp">Employee Search</a></li>
 				<li><a href="customer.jsp">Customer</a></li>
 				<li><a href="reservation.jsp">Reservation</a></li>
 			</ul>
 			<!-- Add view employees code -->
-			<%-- <div class="has-error">
+			 <div class="has-error">
  				 <label class="control-label">${error}</label>
-			</div> --%>
+			</div> 
 
 			<!-- view employee -->
 			<div class="view-employee">
@@ -48,23 +60,48 @@
 						<th>Work Description</th>
 						<th>Position</th>
 						<th>Hire Date</th>
+						<th>Crew ID</th>
 						<th></th>
 						<th></th>
 					</tr>
+						         <%if (list != null){for(int i=0;i<list.length;i++){%>
+         <%String address=list[i].getAddress()+","+list[i].getCity()+","+list[i].getState()+"-"+list[i].getZipcode(); %>
+					
+					
+					
 					<tr>
-						<td id="eno0">187319850</td>
-						<td id="efn0">Joel</td>
-						<td id="eln0">Joseph</td>
-						<td id="eml0">joel.c@fly5.com</td>
-						<td id="edob0">01/24/1988</td>
-						<td id="eadd0"><address>8th Street,San Jose, California - 95112</address></td>
-						<td id="ewd0">Handles the technical issues of the airline</td>
-						<td id="ep0">Aircraft Engineer</td>
-						<td id="ehd0">02/10/2008</td>
-						<td><a href="#" onclick="editEmployee('0', '187319850');"><span
-								class="glyphicon glyphicon-pencil"></span></a></td>
-						<td><a href="#" onclick="deleteEmployee('187319850');"><span
-								class="glyphicon glyphicon-remove"></span></a></td>
+					 <%Calendar hireDateCal=list[i].getHireDate(); %>
+         <%String hireDate = null;
+
+SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+
+ if (hireDateCal != null) {
+ hireDate = sdf.format(hireDateCal.getTime());
+ }  %>
+
+					 <%Calendar dateOfBirthCal=list[i].getDateOfBirth(); %>
+         <%String dateOfBirth = null;
+
+SimpleDateFormat sdf1 = new SimpleDateFormat("MM/dd/yyyy");
+
+ if (dateOfBirthCal != null) {
+ dateOfBirth = sdf1.format(dateOfBirthCal.getTime());
+ }  %>
+
+					
+						<td id="eno<%=i%>"><%=list[i].getEmployeeID() %></td>
+						<td id="efn<%=i%>"><%=list[i].getFirstName() %></td>
+						<td id="eln<%=i%>"><%=list[i].getLastName() %></td>
+						<td id="eml<%=i%>"><%=list[i].getEmailAddress() %></td>
+						<td id="edob<%=i%>"><%=dateOfBirth %></td>
+						<td id="eadd<%=i%>"><address><%=address %></address></td>
+						<td id="ewd<%=i%>"><%=list[i].getWorkDescription()%></td>
+						<td id="ep<%=i%>"><%=list[i].getDesignation() %></td>
+						<td id="ehd<%=i%>"><%=hireDate%></td>
+						<td id="ecrw<%=i %>"><%=list[i].getCrewID()%></td>
+						<td><a href="#" onclick="editEmployee(<%=i%>, <%=list[i].getEmployeeID()%>);"><span class="glyphicon glyphicon-pencil"></span></a></td>
+						<td><a href="#" onclick="deleteEmployee('<%=list[i].getEmployeeID()%>');"><span class="glyphicon glyphicon-remove"></span></a></td><%}}%>
+						
 					</tr>
 				</table>
 			</div>
@@ -82,34 +119,32 @@
 						</div>
 						<div class="modal-body">
 							<form id="newemployeeform" action="employee.do" method="post">
-								<input
-									type="text" class="form-control" name="firstName"
-									placeholder="First Name" required autofocus> <input
-									type="text" class="form-control" name="lastName"
-									placeholder="Last Name" required autofocus><input
-									type="text" class="form-control" name="email"
-									placeholder="Email" required autofocus><input
-									type="text" class="form-control" id="dob" name="dob"
-									placeholder="Date of Birth" required autofocus><input
-									type="text" class="form-control" name="street"
-									placeholder="Street Address" required autofocus><input
-									type="text" class="form-control" name="city" placeholder="City"
-									required autofocus><input type="text"
-									class="form-control" name="state" placeholder="State" required
-									autofocus><input type="text" class="form-control" name="zip"
-									required autofocus placeholder="Zip"> <input type="text" class="form-control"
-									name="workDescription" placeholder="Work Description" required
-									autofocus><select class="form-control"
-									name="position" required autofocus>
+							<input type="hidden" name="action" value="addEmployee"></input>
+								<input type="text" class="form-control" name="firstName" placeholder="First Name" required autofocus> 
+								<input type="text" class="form-control" name="lastName" placeholder="Last Name" required autofocus>
+								<input type="text" class="form-control" name="email" placeholder="Email" required autofocus>
+								<input type="text" class="form-control" id="dob" name="dob" placeholder="Date of Birth" required autofocus>
+								<input type="text" class="form-control" name="street" placeholder="Street Address" required autofocus>
+								<input type="text" class="form-control" name="city" placeholder="City" required autofocus>
+								<input type="text" class="form-control" name="state" placeholder="State" required autofocus>
+								<input type="text" class="form-control" name="zip" required autofocus placeholder="Zip">
+								<input type="text" class="form-control" name="workDescription" placeholder="Work Description" required autofocus>
+								<select class="form-control" name="position" required autofocus>
 									<option value="Captain">Captain</option>
 									<option value="Co-Pilot">Co-Pilot</option>
 									<option value="Flight Attendant">Flight Attendant</option>
 									<option value="Aircraft Engineer">Aircraft Engineer</option>
-									<option value="Ground Staff">Ground Staff</option></select><input
-									type="date" class="form-control" id="hireDate" name="hireDate"
-									placeholder="Hire Date" required autofocus><select class="form-control"
-									name="crew" required autofocus></select>
-
+									<option value="Ground Staff">Ground Staff</option></select>
+									<input type="date" class="form-control" id="hireDate" name="hireDate" placeholder="Hire Date" required autofocus>
+									
+									<select class="form-control" name="crew" required autofocus>
+									
+									<%if (listOfCrew!=null){for(int i=0;i<listOfCrew.length;i++){ %>
+									<option value="<%=listOfCrew[i].getCrewID()%>"><%=listOfCrew[i].getCrewID()%></option>
+										<%}}%>
+										</select>
+										
+										
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default"
 										data-dismiss="modal">Close</button>
@@ -143,33 +178,30 @@
 						</div>
 						<div class="modal-body">
 							<form id="editemployeeform" action="employee.do" method="post">
-								<input type="text" class="form-control" name="eemployeeNo"
-									required autofocus disabled> <input type="text"
-									class="form-control" name="efirstName" placeholder="First Name"
-									required autofocus> <input type="text"
-									class="form-control" name="elastName" placeholder="Last Name"
-									required autofocus><input type="text"
-									class="form-control" name="eemail" placeholder="Email" required
-									autofocus><input type="date" class="form-control" id="eDob" name="eDob"
-									placeholder="Date of Birth" required autofocus><input type="text" class="form-control"
-									name="estreet" placeholder="Street Address" required autofocus><input
-									type="text" class="form-control" name="ecity"
-									placeholder="City" required autofocus><input
-									type="text" class="form-control" name="estate"
-									placeholder="State" required autofocus><input
-									type="text" class="form-control" name="ezip"
-									placeholder="Zip" required autofocus><input
-									type="text" class="form-control" name="eworkDescription"
-									placeholder="Work Description" required autofocus><select class="form-control"
-									name="eposition" required autofocus>
+								<input type="hidden" name="action" value="updateEmployeeInfo"></input>
+								<input type="text" class="form-control" name="eemployeeNo" required autofocus disabled> 
+								<input type="hidden" class="form-control" name="eemployeeNo">
+								<input type="text" class="form-control" name="efirstName" placeholder="First Name" required autofocus> 
+									<input type="text" class="form-control" name="elastName" placeholder="Last Name" required autofocus>
+									<input type="text" class="form-control" name="eemail" placeholder="Email" required autofocus>
+									<input type="date" class="form-control" id="eDob" name="eDob" placeholder="Date of Birth" required autofocus disabled>
+									<input type="text" class="form-control" name="estreet" placeholder="Street Address" required autofocus>
+									<input type="text" class="form-control" name="ecity" placeholder="City" required autofocus>
+									<input type="text" class="form-control" name="estate" placeholder="State" required autofocus>
+									<input type="text" class="form-control" name="ezip" placeholder="Zip" required autofocus>
+									<input type="text" class="form-control" name="eworkDescription" placeholder="Work Description" required autofocus>
+									<select class="form-control" name="eposition" required autofocus>
 									<option value="Captain">Captain</option>
 									<option value="Co-Pilot">Co-Pilot</option>
 									<option value="Flight Attendant">Flight Attendant</option>
 									<option value="Aircraft Engineer">Aircraft Engineer</option>
-									<option value="Ground Staff">Ground Staff</option></select><input
-									type="date" class="form-control" id="ehireDate" name="ehireDate"
-									placeholder="Hire Date" required autofocus><select class="form-control"
-									name="ecrew" required autofocus></select>
+									<option value="Ground Staff">Ground Staff</option></select>
+									<input type="date" class="form-control" id="ehireDate" name="ehireDate" placeholder="Hire Date" required autofocus>
+									<select class="form-control" name="eCrew" id="eCrew" required autofocus>
+									<%if(listOfCrew!=null){for(int i=0;i<listOfCrew.length;i++){ %>
+									<option value="<%=listOfCrew[i].getCrewID() %>"><%=listOfCrew[i].getCrewID() %></option>
+										<%} }%>
+									</select>
 
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default"
@@ -203,6 +235,7 @@
 						</div>
 						<div class="modal-body">
 							<form id="deleteemployeeform" action="employee.do" method="post">
+							<input type="hidden" name="action" value="deleteEmployeeInfo"></input>
 								<input type="hidden" name="demployeeno">
 								<div class="alert alert-warning">
 									<h4>

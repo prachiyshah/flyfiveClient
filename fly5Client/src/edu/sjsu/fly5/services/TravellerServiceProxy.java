@@ -44,37 +44,37 @@ public class TravellerServiceProxy implements edu.sjsu.fly5.services.TravellerSe
     return travellerService;
   }
   
-  public boolean addTraveller(edu.sjsu.fly5.pojos.Traveller traveller) throws java.rmi.RemoteException{
+  public boolean addTraveller(edu.sjsu.fly5.pojos.Person person, edu.sjsu.fly5.pojos.Traveller traveller) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception{
     if (travellerService == null)
       _initTravellerServiceProxy();
-    return travellerService.addTraveller(traveller);
+    return travellerService.addTraveller(person, traveller);
   }
   
-  public edu.sjsu.fly5.pojos.Traveller[] listTravellers() throws java.rmi.RemoteException{
+  public boolean updateTraveller(edu.sjsu.fly5.pojos.Person person, edu.sjsu.fly5.pojos.Traveller traveller) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception{
     if (travellerService == null)
       _initTravellerServiceProxy();
-    return travellerService.listTravellers();
+    return travellerService.updateTraveller(person, traveller);
   }
   
-  public edu.sjsu.fly5.pojos.Traveller viewTravellerInfo(long travellerId) throws java.rmi.RemoteException{
-    if (travellerService == null)
-      _initTravellerServiceProxy();
-    return travellerService.viewTravellerInfo(travellerId);
-  }
-  
-  public boolean updateTraveller(edu.sjsu.fly5.pojos.Traveller traveller) throws java.rmi.RemoteException{
-    if (travellerService == null)
-      _initTravellerServiceProxy();
-    return travellerService.updateTraveller(traveller);
-  }
-  
-  public boolean removeTraveller(long travellerId) throws java.rmi.RemoteException{
+  public boolean removeTraveller(long travellerId) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception{
     if (travellerService == null)
       _initTravellerServiceProxy();
     return travellerService.removeTraveller(travellerId);
   }
   
-  public boolean authenticateTraveller(java.lang.String email, java.lang.String password) throws java.rmi.RemoteException{
+  public edu.sjsu.fly5.pojos.Traveller viewTravellerInfo(long travellerId) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception{
+    if (travellerService == null)
+      _initTravellerServiceProxy();
+    return travellerService.viewTravellerInfo(travellerId);
+  }
+  
+  public edu.sjsu.fly5.pojos.Traveller[] listTravellers() throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception{
+    if (travellerService == null)
+      _initTravellerServiceProxy();
+    return travellerService.listTravellers();
+  }
+  
+  public int authenticateTraveller(java.lang.String email, java.lang.String password) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception{
     if (travellerService == null)
       _initTravellerServiceProxy();
     return travellerService.authenticateTraveller(email, password);

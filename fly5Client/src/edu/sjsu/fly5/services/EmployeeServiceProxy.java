@@ -44,40 +44,40 @@ public class EmployeeServiceProxy implements edu.sjsu.fly5.services.EmployeeServ
     return employeeService;
   }
   
-  public edu.sjsu.fly5.pojos.Employee searchEmployeesBasedOnAttributes(edu.sjsu.fly5.pojos.Attribute[] attributes) throws java.rmi.RemoteException{
-    if (employeeService == null)
-      _initEmployeeServiceProxy();
-    return employeeService.searchEmployeesBasedOnAttributes(attributes);
-  }
-  
-  public boolean addEmployee(edu.sjsu.fly5.pojos.Employee employee) throws java.rmi.RemoteException{
+  public boolean addEmployee(edu.sjsu.fly5.pojos.Employee employee) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception{
     if (employeeService == null)
       _initEmployeeServiceProxy();
     return employeeService.addEmployee(employee);
   }
   
-  public edu.sjsu.fly5.pojos.Employee[] listEmployees() throws java.rmi.RemoteException{
-    if (employeeService == null)
-      _initEmployeeServiceProxy();
-    return employeeService.listEmployees();
-  }
-  
-  public edu.sjsu.fly5.pojos.Employee viewEmployeeInfo(long employeeID) throws java.rmi.RemoteException{
-    if (employeeService == null)
-      _initEmployeeServiceProxy();
-    return employeeService.viewEmployeeInfo(employeeID);
-  }
-  
-  public boolean updateEmployee(edu.sjsu.fly5.pojos.Employee employee) throws java.rmi.RemoteException{
+  public boolean updateEmployee(edu.sjsu.fly5.pojos.Employee employee) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception{
     if (employeeService == null)
       _initEmployeeServiceProxy();
     return employeeService.updateEmployee(employee);
   }
   
-  public boolean removeEmployee(long employeeID) throws java.rmi.RemoteException{
+  public edu.sjsu.fly5.pojos.Employee viewEmployeeInfo(long employeeID) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception{
+    if (employeeService == null)
+      _initEmployeeServiceProxy();
+    return employeeService.viewEmployeeInfo(employeeID);
+  }
+  
+  public edu.sjsu.fly5.pojos.Employee[] listEmployees() throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception{
+    if (employeeService == null)
+      _initEmployeeServiceProxy();
+    return employeeService.listEmployees();
+  }
+  
+  public boolean removeEmployee(long employeeID) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception{
     if (employeeService == null)
       _initEmployeeServiceProxy();
     return employeeService.removeEmployee(employeeID);
+  }
+  
+  public edu.sjsu.fly5.pojos.Employee[] searchEmployeesBasedOnAttributes(edu.sjsu.fly5.pojos.Attribute[] attributes) throws java.rmi.RemoteException, edu.sjsu.fly5.util.Fly5Exception{
+    if (employeeService == null)
+      _initEmployeeServiceProxy();
+    return employeeService.searchEmployeesBasedOnAttributes(attributes);
   }
   
   

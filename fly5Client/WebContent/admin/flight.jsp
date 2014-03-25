@@ -1,5 +1,12 @@
+<%@page import="edu.sjsu.fly5.services.FlightServiceProxy"%>
+<%@page import="edu.sjsu.fly5.pojos.Flight"%>
+<%@page import="edu.sjsu.fly5.pojos.Crew"%>
+<%@page import="edu.sjsu.fly5.services.CrewServiceProxy"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%Crew[] crewList = new CrewServiceProxy("http://localhost:8080/fly5/services/CrewService").listcrews();  
+  Flight[] flights = new FlightServiceProxy("http://localhost:8080/fly5/services/FlightService").listFlights();
+%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -20,14 +27,16 @@
 			<ul class="nav nav-pills" id="myTab">
 				<li class="active"><a href="flight.jsp">Flight</a></li>
 				<li><a href="employee.jsp">Employee</a></li>
+				<li><a href="employee-search.jsp">Employee
+						Search</a></li>
 				<li><a href="customer.jsp">Customer</a></li>
 				<li><a href="reservation.jsp">Reservation</a></li>
 			</ul>
 
 			<!-- Add view flights code -->
-			<%-- <div class="has-error">
+			<div class="has-error">
   				<label class="control-label">${error}</label>
-			</div> --%>
+			</div>
 
 			<!-- view flight -->
 			<div class="view-flight">
@@ -41,44 +50,32 @@
 						<th>Source</th>
 						<th>Destination</th>
 						<th>Departure Time</th>
-						<th>Arrival Time</th>
+						<th>Journey Time</th>
 						<th>No. of Seats</th>
 						<th>Distance (miles)</th>
 						<th>Frequency</th>
 						<th>Fare ($)</th>
+						<th>Crew</th>
 						<th></th>
 						<th></th>
 					</tr>
+					<%for (int i=0; i<flights.length;i++) { Flight flight = flights[i]; %>
 					<tr>
-						<td id="fno0">F5024</td>
-						<td id="src0">LAX</td>
-						<td id="dst0">SFO</td>
-						<td id="dpt0">12:15 pm</td>
-						<td id="jt0">2:00</td>
-						<td id="st0">120</td>
-						<td id="dt0">554</td>
-						<td id="fq0">Daily</td>
-						<td id="fr0">200</td>
-						<td><a href="#" onclick="editFlight('0', 'F5024');"><span
+						<td id="fno<%=i%>"><%=flight.getFlightID()%></td>
+						<td id="src<%=i%>"><%=flight.getSource()%></td>
+						<td id="dst<%=i%>"><%=flight.getDestination()%></td>
+						<td id="dpt<%=i%>"><%=flight.getDepartureTime()%></td>
+						<td id="jt<%=i%>"><%=flight.getJourneyTime()%></td>
+						<td id="st<%=i%>"><%=flight.getNoOfSeats()%></td>
+						<td id="dt<%=i%>"><%=flight.getDistance()%></td>
+						<td id="fq<%=i%>"><%=flight.getFrequency()%></td>
+						<td id="fr<%=i%>"><%=flight.getBaseFare()%></td>
+						<td><a href="#" onclick="editFlight('<%=i%>', '<%=flight.getFlightID()%>');"><span
 								class="glyphicon glyphicon-pencil"></span></a></td>
-						<td><a href="#" onclick="deleteFlight('F5024');"><span
+						<td><a href="#" onclick="deleteFlight('<%=flight.getFlightID() %>');"><span
 								class="glyphicon glyphicon-remove"></span></a></td>
 					</tr>
-					<tr>
-						<td id="fno1">F5086</td>
-						<td id="src1">LAX</td>
-						<td id="dst1">SFO</td>
-						<td id="dpt1">12:15 pm</td>
-						<td id="jt1">2:00 pm</td>
-						<td id="st1">120</td>
-						<td id="dt1">554</td>
-						<td id="fq1">Daily</td>
-						<td id="fr1">200</td>
-						<td><a href="#" onclick="editFlight('1', 'F5086');"><span
-								class="glyphicon glyphicon-pencil"></span></a></td>
-						<td><a href="#" onclick="deleteFlight('F5086');"><span
-								class="glyphicon glyphicon-remove"></span></a></td>
-					</tr>
+					<%} %>
 				</table>
 			</div>
 
@@ -131,8 +128,11 @@
 									placeholder="Frequency" required autofocus>
 								    <input type="text" class="form-control" name="fare"
 									placeholder="Base Fare" required autofocus><select
-									class="form-control" name="crew" required autofocus></select>
-
+									class="form-control" name="crew" required autofocus>
+									<%for (int i=0; i<crewList.length;i++) { Crew crew = crewList[i];%>
+									    <option value="<%=crew.getCrewID()%>"><%=crew.getCrewName()%></option>
+									<%} %>
+									</select>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default"
 										data-dismiss="modal">Close</button>
@@ -161,7 +161,7 @@
 							<form id="editflightform" action="flight.do" method="post">
 								<input type="hidden" name="action" value="update"> <input
 									type="text" class="form-control" name="eflightno"
-									placeholder="Source" required autofocus disabled> <input
+									placeholder="Source" required autofocus readonly> <input
 									type="text" class="form-control" name="esource"
 									placeholder="Source" required autofocus><input
 									type="text" class="form-control" name="edestination"
@@ -178,8 +178,11 @@
 									placeholder="Frequency" required autofocus><input
 									type="text" class="form-control" name="efare"
 									placeholder="Base Fare" required autofocus><select
-									class="form-control" name="ecrew" required autofocus></select>
-
+									class="form-control" name="ecrew" required autofocus>
+									<%for (int i=0; i<crewList.length;i++) { Crew crew = crewList[i];%>
+									    <option value="<%=crew.getCrewID()%>"><%=crew.getCrewName()%></option>
+									<%} %>
+									</select>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default"
 										data-dismiss="modal">Close</button>

@@ -19,6 +19,7 @@ import edu.sjsu.fly5.util.Patterns;
  * Servlet implementation class FlightServlet
  */
 public class FlightServlet extends HttpServlet {
+	private static final String ZERO_SECS = ":00";
 	private static final String ERROR = "error";
 	private static final long serialVersionUID = 1L;
 	private FlightServiceProxy flightProxy = new FlightServiceProxy();
@@ -65,13 +66,21 @@ public class FlightServlet extends HttpServlet {
 	}
 
 	private void deleteFlight(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+			HttpServletResponse response) {
 		String flightID = request.getParameter("dflightno");
-		flightProxy.deleteFlightDetails(flightID);
+		try {
+			flightProxy.deleteFlightDetails(flightID);
+		} catch (Fly5Exception e) {
+			request.setAttribute("error", e.getFaultBean().getFaultMessage());
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			request.setAttribute("error", "Remote error.");
+			e.printStackTrace();
+		}
 	}
 
 	private void updateFlight(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+			HttpServletResponse response){
 
 		String source = request.getParameter("esource");
 		String destination = request.getParameter("edestination");
@@ -81,41 +90,64 @@ public class FlightServlet extends HttpServlet {
 		String seats = request.getParameter("eseats");
 		String baseFare = request.getParameter("efare");
 		String distance = request.getParameter("edistance");
+		String crewId = request.getParameter("ecrew");
 		Flight flight = getValidFlight(request, response,source,destination,departureTime,journeyTime,frequency,seats,baseFare,distance);
 		if(flight != null)
 		{
-			flightProxy.updateFlightDetails(flight);
+			flight.setFlightID(request.getParameter("eflightno"));
+			System.out.println(flight.getFlightID());
+			flight.setCrewID(Long.parseLong(crewId));
+			try {
+				flightProxy.updateFlightDetails(flight);
+			} catch (Fly5Exception e) {
+				request.setAttribute("error", e.getFaultBean().getFaultMessage());
+				e.printStackTrace();
+			} catch (RemoteException e) {
+				request.setAttribute("error", "Remote error.");
+				e.printStackTrace();
+			}
 		}
 	}
 
 	private void addFlight(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException,
-			RemoteException, Fly5Exception {
+			HttpServletResponse response)
+			 {
 		
 		String source = request.getParameter("source");
 		String destination = request.getParameter("destination");
-		String departureTime = request.getParameter("departure");
+		String departureTime = request.getParameter("departure") + ZERO_SECS;
 		String journeyTime = request.getParameter("journey");
 		String frequency = request.getParameter("frequency");
 		String seats = request.getParameter("seats");
 		String baseFare = request.getParameter("fare");
 		String distance = request.getParameter("distance");
+		String crewId = request.getParameter("crew");
 		Flight flight = getValidFlight(request, response,source,destination,departureTime,journeyTime,frequency,seats,baseFare,distance);
 		if(flight !=null)
 		{
-			flightProxy.addFlightDetails(flight);
+			flight.setCrewID(Long.parseLong(crewId));
+			try {
+				flightProxy.addFlightDetails(flight);
+			} catch (Fly5Exception e) {
+				request.setAttribute("error", e.getFaultBean().getFaultMessage());
+				e.printStackTrace();
+			} catch (RemoteException e) {
+				request.setAttribute("error", "Remote error.");
+				e.printStackTrace();
+			}
 		}
 	}
 
 	private Flight getValidFlight(HttpServletRequest request,
-			HttpServletResponse response, String source, String destination, String departureTime, String journeyTime, String frequency, String seats, String baseFare, String distance) throws ServletException, IOException {
+			HttpServletResponse response, String source, String destination, String departureTime, 
+			String journeyTime, String frequency, String seats, String baseFare, String distance){
 
 		boolean flag = validateFlightParameters(source,destination,departureTime,journeyTime,frequency,seats,baseFare,distance,request,response);
 
 		if(flag)
 		{
 			Flight flight = new Flight();
-			flight.setCrewID(100);
+			//flight.setCrewID(100);
 			flight.setBaseFare(Double.parseDouble(baseFare));
 			flight.setDepartureTime(departureTime);
 			flight.setDestination(destination);
@@ -133,7 +165,7 @@ public class FlightServlet extends HttpServlet {
 
 	private boolean validateFlightParameters(String source, String destination,
 			String departureTime, String journeyTime, String frequency, String seats, String baseFare, 
-			String distance, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			String distance, HttpServletRequest request, HttpServletResponse response){
 		
 		Pattern pattern = Pattern.compile(Patterns.STRING_PATTERN);
 		Matcher matcher = pattern.matcher(source);

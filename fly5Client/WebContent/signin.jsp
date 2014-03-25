@@ -14,19 +14,21 @@
 <div class="container">
 		<h2 class="title">Fly5 Airlines</h2>
 		<div class="form-div">
-			<form name="signin-form" class="form-signin" action="Login.do" method="post">
+		
+			<form name="signin-form" class="form-signin" action="profile.do" method="post">
+			<input type="hidden" name = "action" value = "Traveller-signin.do">
+			<%if(request.getAttribute("massege")!=null){%>
+			<%=request.getAttribute("massege") %>		<%} %>
 				<fieldset>
 					<legend>Sign In</legend>
 					<div class="has-error">
 					<label class="control-label">${error}</label></div>
-					<input type="text" class="form-control" name="email" placeholder="Email address"
-						required autofocus> <input type="password"
-						class="form-control" name="password" placeholder="Password" required> <label
-						class="checkbox"> <input type="checkbox"
-						value="remember-me"> Remember me
+					<input type="text" class="form-control" name="email" placeholder="Email address" required autofocus> 
+					<input type="password"class="form-control" name="password" placeholder="Password" required> 
+					<labelclass="checkbox"> 
+					<input type="checkbox"value="remember-me"> Remember me
 					</label>
-					<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
-						in</button>
+					<button class="btn btn-lg btn-primary btn-block" type="submit">Signin</button>
 				</fieldset>
 			    <span class="help-block">New to Fly5? <a href="signup.jsp">Sign Up</a></span>
 			</form>

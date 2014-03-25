@@ -37,7 +37,7 @@ td, th {
 	text-align: center;
     height: 10px;
     padding-left: 20px;
-    margin-top: -15px;
+    /* margin-top: -15px; */
 }
 
 .expander {
@@ -47,4 +47,8 @@ td, th {
 
 .view-reservation hr {
 	margin-top: 0px;
+}
+
+#searchemployeeform{
+	max-width: 400px;
 }
